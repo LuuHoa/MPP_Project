@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="328.0" prefWidth="336.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.MenuController">
+   <children>
+      <BorderPane prefHeight="328.0" prefWidth="336.0">
+         <top>
+            <MenuBar fx:id="mBar" BorderPane.alignment="CENTER">
+              <menus>
+                <Menu fx:id="admin" mnemonicParsing="false" text="Administrator">
+                  <items>
+                    <MenuItem fx:id="books" mnemonicParsing="false" text="Books" />
+                        <MenuItem fx:id="members" mnemonicParsing="false" text="Library Members" />
+                  </items>
+                </Menu>
+                <Menu fx:id="librian" mnemonicParsing="false" text="Librarian">
+                  <items>
+                    <MenuItem fx:id="checkOutBook" mnemonicParsing="false" text="Check out Book" />
+                        <MenuItem fx:id="checkOutRecord" mnemonicParsing="false" text="Check out Records" />
+                  </items>
+                </Menu>
+                <Menu mnemonicParsing="false" text="Help">
+                  <items>
+                    <MenuItem mnemonicParsing="false" text="About" />
+                  </items>
+                </Menu>
+              </menus>
+            </MenuBar>
+         </top>
+         <right>
+            <Text fx:id="welcomeText" strokeType="OUTSIDE" strokeWidth="0.0" text="Welcome Name" textAlignment="CENTER" BorderPane.alignment="TOP_RIGHT" />
+         </right>
+      </BorderPane>
+   </children>
+</AnchorPane>
