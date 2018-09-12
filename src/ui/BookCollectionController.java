@@ -38,6 +38,8 @@ public class BookCollectionController implements Initializable {
 	@FXML
 	TableColumn<Book, String> bookCopiesCol;
 	@FXML
+	TableColumn<Book, String> addCopiesCol;
+	@FXML
 	Button addBookBtn;
 
 	private final ObservableList<Book> data = FXCollections.observableArrayList(new Book("Jacob", 7,"Smith", null),
@@ -49,14 +51,20 @@ public class BookCollectionController implements Initializable {
 		System.out.println("Eman");
 	}
 
-	public void onEditChange(TableColumn.CellEditEvent<Book, String> editBookNumCopiesEvent) {
+	public void onEditChange(TableColumn.CellEditEvent<Book, String> addBookNumCopiesEvent) {
 
 		title.setText("Welcome to Uniqlooo");
 		Book editBook = bookTbl.getSelectionModel().getSelectedItem();
-		if (editBook.getNumTotalCopies() >= Integer.parseInt(editBookNumCopiesEvent.getNewValue()))
-			return;
+		int increaseNum = Integer.parseInt(addBookNumCopiesEvent.getNewValue());
+		if (1 >= increaseNum)
+			editBook.addBookCopies(increaseNum);
+		
 		else
-			editBook.setNumTotalCopies(Integer.valueOf(editBookNumCopiesEvent.getNewValue()));
+			return;
+		
+		bookCopiesCol
+		.setCellValueFactory(c -> new SimpleStringProperty(String.valueOf(c.getValue().getNumTotalCopies())));
+		addCopiesCol.setText("");
 	}
 
 	@Override
@@ -74,7 +82,7 @@ public class BookCollectionController implements Initializable {
 		bookCopiesCol
 				.setCellValueFactory(c -> new SimpleStringProperty(String.valueOf(c.getValue().getNumTotalCopies())));
 
-		bookCopiesCol.setCellFactory(TextFieldTableCell.forTableColumn());
+		addCopiesCol.setCellFactory(TextFieldTableCell.forTableColumn());
 	}
 
 }
