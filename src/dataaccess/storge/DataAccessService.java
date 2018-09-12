@@ -56,6 +56,7 @@ public class DataAccessService {
 	public static void loadAllBooks() {
 		allBooks = new ArrayList<>();
 		allBooks = ((List<Book>) (Object) ReadObjectFromFile(OUTPUT_DIR + StorageType.BOOKS));
+
 	}
 
 	public static void saveAllBooks() {
