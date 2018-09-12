@@ -34,6 +34,7 @@ public class Book implements Serializable {
 		this.title = title;
 		this.authorList = authorList;
 		this.numTotalCopies = numTotalCopies;
+		this.itsCopiesList = new ArrayList<BookCopy>();
 		for (int i = 0; i < numTotalCopies; i++) {
 			BookCopy bc = new BookCopy(this, String.valueOf(count.incrementAndGet()));
 			this.itsCopiesList.add(bc);
