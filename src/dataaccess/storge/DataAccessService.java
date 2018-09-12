@@ -10,6 +10,7 @@ import java.util.List;
 
 import business.Address;
 import business.Book;
+import business.BookCopy;
 import business.CheckOutEntry;
 import business.CheckoutRecord;
 import business.LibraryMember;
@@ -43,6 +44,7 @@ public class DataAccessService {
 
 	}
 
+	// All Member operations
 	public static void loadAllMembers() {
 		allMembers = new ArrayList<>();
 		allMembers = ((List<LibraryMember>) (Object) ReadObjectFromFile(OUTPUT_DIR + StorageType.MEMBERS));
@@ -52,7 +54,14 @@ public class DataAccessService {
 		WriteObjectToFile(OUTPUT_DIR + StorageType.MEMBERS, (List<Object>) (Object)allMembers);
 	}
 	
-	// Book operations
+	public static LibraryMember getMember(String ID) {
+		for (LibraryMember m : allMembers) {
+			if (m.getId().equals(ID)) return m;
+		}
+		return null;
+	}
+	
+	// All book operations
 	public static void loadAllBooks() {
 		allBooks = new ArrayList<>();
 		allBooks = ((List<Book>) (Object) ReadObjectFromFile(OUTPUT_DIR + StorageType.BOOKS));
