@@ -26,8 +26,6 @@ public class BookCollectionController implements Initializable {
 	@FXML
 	Text title;
 
-	@FXML
-	TextField search;
 
 	@FXML
 	TableView<Book> bookTbl;
@@ -38,37 +36,46 @@ public class BookCollectionController implements Initializable {
 	@FXML
 	TableColumn<Book, String> bookAuthorsCol;
 	@FXML
-	TableColumn<Book, String> bookCopiesCol;
+	TableColumn<Book, String> bookLengthCol;
 	@FXML
-	TableColumn<Book, String> addCopiesCol;
+	TableColumn<Book, String> bookCopiesCol;
+	
+	
+	@FXML
+	Button addCopiesBtn;
+	
 	@FXML
 	Button addBookBtn;
 
-	private final ObservableList<Book> data = FXCollections.observableArrayList(new Book("Jacob", 7,"Smith", null),
-			new Book("Isabella", 7,"Johnson", null), new Book("Ethan", 7,"Williams", null), new Book("Emma", 7,"Jones", null),
-			new Book("Michael", 7, "Brown", null));
-	
-	
+	private final ObservableList<Book> data = FXCollections.observableArrayList(new Book("Jacob", 7, "Smith", null),
+			new Book("Isabella", 7, "Johnson", null), new Book("Ethan", 7, "Williams", null),
+			new Book("Emma", 7, "Jones", null), new Book("Michael", 7, "Brown", null));
+
 	private ObservableList<Book> booksData;
-	
-	
 
 	public void onClick(ActionEvent event) {
 
 		System.out.println("Eman");
 	}
 
-	public void onEditChange(TableColumn.CellEditEvent<Book, String> addBookNumCopiesEvent) {
+	public void onEdit(ActionEvent event) {
 
 		title.setText("Welcome to Uniqlooo");
-		Book editBook = bookTbl.getSelectionModel().getSelectedItem();
-		int increaseNum = Integer.parseInt(addBookNumCopiesEvent.getNewValue());
+	/*	Book editBook = bookTbl.getSelectionModel().getSelectedItem();
+		System.out.println(editBook.toString());
+		
+		
+		int increaseNum = Integer.parseInt(addCopiesCol.getText());
 		if (1 >= increaseNum)
 			editBook.addBookCopies(increaseNum);
-		
+
 		else
 			return;
-		
+
+		addCopiesCol.setCellValueFactory(c -> new SimpleStringProperty(""));
+
+		bookCopiesCol
+				.setCellValueFactory(c -> new SimpleStringProperty(String.valueOf(c.getValue().getNumTotalCopies())));*/
 	}
 
 	@Override
@@ -82,11 +89,11 @@ public class BookCollectionController implements Initializable {
 		bookTitleCol.setCellValueFactory(c -> new SimpleStringProperty(c.getValue().getTitle()));
 		bookISBNCol.setCellValueFactory(c -> new SimpleStringProperty(c.getValue().getISBN()));
 		bookAuthorsCol.setCellValueFactory(c -> new SimpleStringProperty(c.getValue().getAuthorListString()));
+		bookLengthCol
+				.setCellValueFactory(c -> new SimpleStringProperty(String.valueOf(c.getValue().getCheckoutLength())));
 		bookCopiesCol
 				.setCellValueFactory(c -> new SimpleStringProperty(String.valueOf(c.getValue().getNumTotalCopies())));
 
-		addCopiesCol.setCellFactory(c -> new SimpleStringProperty());
-	//	addCopiesCol.setCellFactory(TextFieldTableCell.forTableColumn());
 	}
 
 }
