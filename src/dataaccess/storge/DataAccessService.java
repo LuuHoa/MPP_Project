@@ -47,6 +47,12 @@ public class DataAccessService {
 		WriteObjectToFile(memberFilepath, memberList);
 	}
 	
+	public static void addNewBook(Book book) {
+		List<Object> memberList = ReadObjectFromFile(bookFilepath);
+		memberList.add(book);
+
+		WriteObjectToFile(bookFilepath, memberList);
+	}
 
 	public static boolean isValidMemberID(String ID) {
 		List<LibraryMember> li = getMemberLists();
