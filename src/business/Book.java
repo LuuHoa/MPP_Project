@@ -8,11 +8,28 @@ public class Book implements Serializable {
 	private static final long serialVersionUID = 8309080721495266420L;
 	private String ISBN;
 	private String title;
-	private List<Athours> authorList ;
+	private List<Athours> authorList;
 	private int numTotalCopies;
 	private int numRemainCopies;
+	private List<BookCopy> itsCopiesList; 
 	
 	
+	public Book(String ISBN, String title, List<Athours> authorList) {
+		this.ISBN = ISBN;
+		this.title = title;
+		this.authorList = authorList;
+		this.numTotalCopies = 1;
+		this.numRemainCopies = 1;
+	}
+	
+	public Book(String ISBN, String title, List<Athours> authorList, int numTotalCopies) {
+		this.ISBN = ISBN;
+		this.title = title;
+		this.authorList = authorList;
+		this.numTotalCopies = numTotalCopies;
+		this.numRemainCopies = numTotalCopies;
+	}
+
 	public int getNumTotalCopies() {
 		return numTotalCopies;
 	}
