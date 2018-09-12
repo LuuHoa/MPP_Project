@@ -1,17 +1,20 @@
 package business;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.atomic.AtomicInteger;
 
 public class Book implements Serializable {
 	
+	private static AtomicInteger count = new AtomicInteger(0); 
 	private static final long serialVersionUID = 8309080721495266420L;
 	private String ISBN;
 	private String title;
 	private List<Author> authorList;
 	private int numTotalCopies;
 	private int numRemainCopies;
-	private List<BookCopy> itsCopiesList; 
+	private List<BookCopy> itsCopiesList;
 	
 	
 	public Book(String ISBN, String title, List<Author> authorList) {
@@ -20,6 +23,10 @@ public class Book implements Serializable {
 		this.authorList = authorList;
 		this.numTotalCopies = 1;
 		this.numRemainCopies = 1;
+		this.itsCopiesList = new ArrayList<BookCopy>();
+		BookCopy bc = new BookCopy(this, String.valueOf(count.incrementAndGet()));
+		this.itsCopiesList.add(bc);
+		
 	}
 	
 	public Book(String ISBN, String title, List<Author> authorList, int numTotalCopies) {
@@ -28,6 +35,16 @@ public class Book implements Serializable {
 		this.authorList = authorList;
 		this.numTotalCopies = numTotalCopies;
 		this.numRemainCopies = numTotalCopies;
+		for(int i = 0; i < numTotalCopies; i++)
+		{
+			BookCopy bc = new BookCopy(this, String.valueOf(count.incrementAndGet()));
+			this.itsCopiesList.add(bc);
+		}
+
+	}
+
+	public List<BookCopy> getItsCopiesList() {
+		return itsCopiesList;
 	}
 
 	public int getNumTotalCopies() {
