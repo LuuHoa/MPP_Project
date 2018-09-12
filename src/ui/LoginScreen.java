@@ -1,6 +1,7 @@
 package ui;
 
 
+import business.Utilites;
 import dataaccess.storge.DataAccessService;
 import javafx.application.Application;
 
@@ -17,14 +18,29 @@ public class LoginScreen extends Application {
     	DataAccessService.simulateData();
         Application.launch(LoginScreen.class, args);
     }
+	
+	Stage primaryStage;
+	public void openAdminScreen() {
+		
+		AdminScreen adminScreen = AdminScreen.INSTANCE;
+		adminScreen.setStage(primaryStage);
+		adminScreen.setData(Utilites.getTableList());
+		adminScreen.show();  
+		//primaryStage.hide();
+		 
+	}
     
     @Override
     public void start(Stage stage) throws Exception {
         Parent root = FXMLLoader.load(getClass().getResource("/ui/login.fxml"));
         
-        stage.setTitle("FXML Welcome");
+        primaryStage = stage;
+        
+        stage.setTitle("Welcome to our Library");
         stage.setScene(new Scene(root));
         stage.show();
+        
+       
     }
     
  

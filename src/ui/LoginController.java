@@ -41,8 +41,11 @@ public class LoginController {
 
 			for (LibraryStaff staff : staffList) {
 				if (staff.getId().equals(id) && staff.getPassword().equals(password)) {
-					error_txt.setText("valid id  Password : " + staff.getMemberRole() );
-					found = true;
+					error_txt.setText("valid id  Password : " + staff.getMemberRole() );	
+					if(staff.getMemberRole().equals("Admin")) {
+					LoginScreen login =  new LoginScreen();
+					login.openAdminScreen();
+					}
 					break;
 				}
 			}
