@@ -11,28 +11,34 @@ import business.Address;
 import business.Book;
 import business.LibraryMember;
 import business.LibraryStaff;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 
 public class DataAccessService {
+
 
 	private static final String bookFilepath="docs/book.txt";
 	private static final String checkoutFilepath="docs/checkout.txt";
 	private static final String userFilepath = "src/dataaccess/storge/user.txt";
 	private static final String memberFilepath = "src/dataaccess/storge/member.txt";
 	
+
+
 	public static List<LibraryStaff> getLibaryMembers() {
-		
-		List<LibraryStaff> staffList = (List<LibraryStaff>)(Object)ReadObjectFromFile(userFilepath);
+
+		List<LibraryStaff> staffList = (List<LibraryStaff>) (Object) ReadObjectFromFile(userFilepath);
 		return staffList;
-		
-	} 
-	
+
+	}
+
 	public static List<Book> getBookLists() {
 		return ((List<Book>) (Object) ReadObjectFromFile(bookFilepath));
 	}
-	
+
 	public static List<LibraryMember> getMemberLists() {
 		return ((List<LibraryMember>) (Object) ReadObjectFromFile(memberFilepath));
 	}
+
 
 	public static void addNewMenber(LibraryMember member) {
 		List<Object> memberList = ReadObjectFromFile(memberFilepath);
@@ -41,18 +47,21 @@ public class DataAccessService {
 		WriteObjectToFile(memberFilepath, memberList);
 	}
 	
+
 	public static boolean isValidMemberID(String ID) {
 		List<LibraryMember> li = getMemberLists();
 		for (LibraryMember m : li) {
-			if(m.getId().equals(ID)) return true;
+			if (m.getId().equals(ID))
+				return true;
 		}
 		return false;
 	}
-	
+
 	public static LibraryMember getMemeber(String ID) {
 		List<LibraryMember> li = getMemberLists();
 		for (LibraryMember m : li) {
-			if(m.getId().equals(ID)) return m;
+			if (m.getId().equals(ID))
+				return m;
 		}
 		return null;
 	}
@@ -65,17 +74,19 @@ public class DataAccessService {
 		return false;
 	}
 	
+
 	public static Book getBook(String isbn) {
 		List<Book> li = getBookLists();
 		for (Book m : li) {
-			if(m.getISBN().equals(isbn)) return m;
+			if (m.getISBN().equals(isbn))
+				return m;
 		}
 		return null;
 	}
 	
 
-
 	public static void simulateData() {
+
 		   LibraryStaff s = new LibraryStaff("11", "123", "Admin");
 		   
 		   LibraryStaff s2 = new LibraryStaff("22", "123", "Librarian");
@@ -121,15 +132,17 @@ public class DataAccessService {
 			System.out.println(lm2);
 			WriteObjectToFile(bookFilepath, lm2);
 			// End		   
+
+
 	}
-	
-	private static void WriteObjectToFile(String filepath,List<Object> serObj) {
+
+	private static void WriteObjectToFile(String filepath, List<Object> serObj) {
 
 		try {
 
 			FileOutputStream fileOut = new FileOutputStream(filepath);
 			ObjectOutputStream objectOut = new ObjectOutputStream(fileOut);
-			  objectOut.writeObject(serObj);
+			objectOut.writeObject(serObj);
 			objectOut.close();
 			System.out.println("The Object  was succesfully written to a file");
 
@@ -145,8 +158,7 @@ public class DataAccessService {
 			FileInputStream fileIn = new FileInputStream(filepath);
 			ObjectInputStream objectIn = new ObjectInputStream(fileIn);
 
-
-			List<Object> objectList = (List<Object>)objectIn.readObject();
+			List<Object> objectList = (List<Object>) objectIn.readObject();
 			System.out.println("The Object has been read from the file");
 			objectIn.close();
 			return objectList;
@@ -156,9 +168,37 @@ public class DataAccessService {
 			return null;
 		}
 	}
-	
+
+	public static void WriteBooksToFile(List<Object> serObj) {
+
+		try {
+			WriteObjectToFile(bookFilepath, serObj);
+
+		} catch (Exception ex) {
+			ex.printStackTrace();
+		}
+	}
+
+	public static ObservableList<Book> ReadBookFromFile() {
+
+		try {
+			List<Object> books = ReadObjectFromFile(bookFilepath);
+			List<Book> arrbooks = new ArrayList<Book>();
+			for (Object book : books) {
+				arrbooks.add((Book) book);
+			}
+
+			ObservableList<Book> results = FXCollections.observableArrayList(arrbooks);
+			return results;
+
+		} catch (Exception ex) {
+			ex.printStackTrace();
+			return null;
+		}
+	}
+
 	public static void main(String[] args) {
 		simulateData();
 	}
-	
+
 }

@@ -1,10 +1,12 @@
 package ui;
 
 import java.net.URL;
+import java.util.List;
 import java.util.Random;
 import java.util.ResourceBundle;
 
 import business.Book;
+import dataaccess.storge.DataAccessService;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -45,6 +47,11 @@ public class BookCollectionController implements Initializable {
 	private final ObservableList<Book> data = FXCollections.observableArrayList(new Book("Jacob", 7,"Smith", null),
 			new Book("Isabella", 7,"Johnson", null), new Book("Ethan", 7,"Williams", null), new Book("Emma", 7,"Jones", null),
 			new Book("Michael", 7, "Brown", null));
+	
+	
+	private ObservableList<Book> booksData;
+	
+	
 
 	public void onClick(ActionEvent event) {
 
@@ -70,8 +77,8 @@ public class BookCollectionController implements Initializable {
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		// TODO Auto-generated method stub
-
-		bookTbl.getItems().addAll(data);
+		booksData = DataAccessService.ReadBookFromFile();
+		bookTbl.getItems().addAll(booksData);
 
 		bookTbl.setEditable(true);
 
