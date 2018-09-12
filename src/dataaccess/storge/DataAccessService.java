@@ -7,13 +7,17 @@ import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 import java.util.List;
 
+import business.Address;
+import business.Book;
+import business.LibraryMember;
 import business.LibraryStaff;
 
 public class DataAccessService {
 	private static final String userFilepath="docs/user.txt";
 	private static final String bookFilepath="docs/book.txt";
-
-
+	private static final String memberFilepath="docs/member.txt";
+	private static final String checkoutFilepath="docs/checkout.txt";
+	
 	public static List<LibraryStaff> getLibaryMembers() {
 		
 		List<LibraryStaff> staffList = (List<LibraryStaff>)(Object)ReadObjectFromFile(userFilepath);
@@ -21,6 +25,47 @@ public class DataAccessService {
 		
 	} 
 	
+	public static List<Book> getBookLists() {
+		return ((List<Book>) (Object) ReadObjectFromFile(bookFilepath));
+	}
+	
+	public static List<LibraryMember> getMemberLists() {
+		return ((List<LibraryMember>) (Object) ReadObjectFromFile(memberFilepath));
+	}
+	
+	public static boolean isValidMemberID(String ID) {
+		List<LibraryMember> li = getMemberLists();
+		for (LibraryMember m : li) {
+			if(m.getId().equals(ID)) return true;
+		}
+		return false;
+	}
+	
+	public static LibraryMember getMemeber(String ID) {
+		List<LibraryMember> li = getMemberLists();
+		for (LibraryMember m : li) {
+			if(m.getId().equals(ID)) return m;
+		}
+		return null;
+	}
+	
+	public static boolean isBookAvailable(String isbn) {
+		List<Book> li = getBookLists();
+		for (Book b : li) {
+			if(b.getISBN().equals(isbn) && b.getNumRemainCopies() > 0) return true; 
+		}
+		return false;
+	}
+	
+	public static Book getBook(String isbn) {
+		List<Book> li = getBookLists();
+		for (Book m : li) {
+			if(m.getISBN().equals(isbn)) return m;
+		}
+		return null;
+	}
+
+
 	public static void simulateData() {
 		   LibraryStaff s = new LibraryStaff("11", "123", "Admin");
 		   
@@ -32,7 +77,27 @@ public class DataAccessService {
 		   objectList.add(s2);
 		   objectList.add(s3);
 		   WriteObjectToFile(userFilepath, objectList);
+		   
+			// To be removed
+			List<Object> lm = new ArrayList<>();
+			lm.add(new LibraryMember("01", "Hai", "Orsi", new Address("620 Gonzales Drive", "Long Beach", "NY", "11561"), "123456789"));
+			lm.add(new LibraryMember("02", "Hai", "Orsi", new Address("9268 Arcadia Dr", "Lakewood", "NJ", "08701"), "123456789"));
+			lm.add(new LibraryMember("03", "Hai", "Orsi", new Address("7807 Lees Creek Street", "Upper Marlboro", "MD", "20772"), "123456789"));
+			lm.add(new LibraryMember("04", "Hai", "Orsi", new Address("8157 Heather Drive", "Tampa", "FL", "33604"), "123456789"));
+			lm.add(new LibraryMember("05", "Hai", "Orsi", new Address("75 Deerfield Rd", "Boca Raton", "FL", "33428"), "123456789"));
+			System.out.println(lm);
+			WriteObjectToFile(memberFilepath, lm);
+			
+			List<Object> lm2 = new ArrayList<>();
+			lm2.add(new Book("0061964361", 21, "Book 1", null));
+			lm2.add(new Book("0061964362", 7, "Book 2", null));
+			lm2.add(new Book("0061964363", 21, "Book 3", null,2));
+			lm2.add(new Book("0061964364", 7, "Book 4", null,2));
+			System.out.println(lm2);
+			WriteObjectToFile(bookFilepath, lm2);
+			// End		   
 	}
+	
 	private static void WriteObjectToFile(String filepath,List<Object> serObj) {
 
 		try {
@@ -66,5 +131,9 @@ public class DataAccessService {
 			return null;
 		}
 	}
-
+	
+	public static void main(String[] args) {
+		simulateData();
+	}
+	
 }

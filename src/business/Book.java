@@ -10,6 +10,7 @@ public class Book implements Serializable {
 	private static AtomicInteger count = new AtomicInteger(0); 
 	private static final long serialVersionUID = 8309080721495266420L;
 	private String ISBN;
+	private int checkoutLength;
 	private String title;
 	private List<Author> authorList;
 	private int numTotalCopies;
@@ -17,7 +18,7 @@ public class Book implements Serializable {
 	private List<BookCopy> itsCopiesList;
 	
 	
-	public Book(String ISBN, String title, List<Author> authorList) {
+	public Book(String ISBN, int checkoutLength, String title, List<Author> authorList) {
 		this.ISBN = ISBN;
 		this.title = title;
 		this.authorList = authorList;
@@ -29,7 +30,7 @@ public class Book implements Serializable {
 		
 	}
 	
-	public Book(String ISBN, String title, List<Author> authorList, int numTotalCopies) {
+	public Book(String ISBN, int checkoutLength, String title, List<Author> authorList, int numTotalCopies) {
 		this.ISBN = ISBN;
 		this.title = title;
 		this.authorList = authorList;
@@ -62,6 +63,10 @@ public class Book implements Serializable {
 	public String getISBN() {
 		return ISBN;
 	}
+	
+	public int getCheckoutLength() {
+		return checkoutLength;
+	}
 
 	public String getTitle() {
 		return title;
@@ -86,8 +91,8 @@ public class Book implements Serializable {
 
 	@Override
 	public String toString() {
-		return "Book [ISBN=" + ISBN + ", title=" + title + ", authorList=" + authorList + ", numTotalCopies="
-				+ numTotalCopies + ", numRemainCopies=" + numRemainCopies + "]";
+		return "Book [ISBN=" + ISBN + ", checkoutLength=" + checkoutLength + ", title=" + title + ", authorList="
+				+ authorList + ", numTotalCopies=" + numTotalCopies + ", numRemainCopies=" + numRemainCopies
+				+ ", itsCopiesList=" + itsCopiesList + "]";
 	}
-
 }
