@@ -40,9 +40,9 @@ public class BookCollectionController implements Initializable {
 	@FXML
 	Button addBookBtn;
 
-	private final ObservableList<Book> data = FXCollections.observableArrayList(new Book("Jacob", "Smith", null),
-			new Book("Isabella", "Johnson", null), new Book("Ethan", "Williams", null), new Book("Emma", "Jones", null),
-			new Book("Michael", "Brown", null));
+	private final ObservableList<Book> data = FXCollections.observableArrayList(new Book("Jacob", 7,"Smith", null),
+			new Book("Isabella", 7,"Johnson", null), new Book("Ethan", 7,"Williams", null), new Book("Emma", 7,"Jones", null),
+			new Book("Michael", 7, "Brown", null));
 
 	public void onClick(ActionEvent event) {
 

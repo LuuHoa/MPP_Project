@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="566.0" prefWidth="500.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.CheckoutController">
+   <children>
+      <AnchorPane prefHeight="580.0" prefWidth="500.0">
+         <children>
+            <TableView fx:id="tvCheckoutRecord" layoutX="28.0" layoutY="198.0" prefHeight="286.0" prefWidth="446.0">
+              <columns>
+                <TableColumn fx:id="tcBookTitle" prefWidth="204.0" text="Title" />
+                <TableColumn fx:id="tcCheckoutDate" minWidth="0.0" prefWidth="121.0" text="Checkout Date" />
+                <TableColumn fx:id="tcDueDate" minWidth="0.0" prefWidth="120.0" text="Due Date" />
+              </columns>
+            </TableView>
+            <Label layoutX="202.0" layoutY="22.0" text="BOOK CHECKOUT" />
+            <Label layoutX="36.0" layoutY="74.0" text="Member ID:" />
+            <Label layoutX="36.0" layoutY="109.0" text="ISBN number:" />
+            <TextField fx:id="tID" layoutX="164.0" layoutY="69.0" />
+            <TextField fx:id="tISBN" layoutX="164.0" layoutY="104.0" />
+            <Button fx:id="btnCheckout" layoutX="210.0" layoutY="504.0" mnemonicParsing="false" onAction="#onClickBtnCheckout" text="Check out" />
+            <Label fx:id="lbError" layoutX="145.0" layoutY="165.0" prefHeight="17.0" prefWidth="212.0" />
+            <Button fx:id="btnAdd" layoutX="376.0" layoutY="69.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="85.0" text="Add" onAction="#onClickBtnAdd" />
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>
