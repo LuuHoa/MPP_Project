@@ -6,7 +6,7 @@ public class Address implements Serializable{
 	private static final long serialVersionUID = 8309080721495266420L;
 	private String street;
 	private String city;
-	private String stae;
+	private String state;
 	private String zip;
 	
 	public String getStreet() {
@@ -15,8 +15,8 @@ public class Address implements Serializable{
 	public String getCity() {
 		return city;
 	}
-	public String getStae() {
-		return stae;
+	public String getState() {
+		return state;
 	}
 	public String getZip() {
 		return zip;
@@ -25,12 +25,12 @@ public class Address implements Serializable{
 	public Address(String street, String city, String state, String zip) {
 		this.street = street;
 		this.city = city;
-		this.stae = state;
+		this.state = state;
 		this.zip = zip;
 	}
 	
 	@Override
 	public String toString() {
-		return "Address [street=" + street + ", city=" + city + ", stae=" + stae + ", zip=" + zip + "]";
+		return "Address [street=" + street + ", city=" + city + ", stae=" + state + ", zip=" + zip + "]";
 	}
 }
