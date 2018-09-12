@@ -22,6 +22,9 @@
     -fx-background: rgb(225, 228, 203);    
 }
 
+.table-row-cell:selected { 
+    -fx-background: rgb(100, 145, 47);
+}
 
 .button{
     -fx-text-fill: rgb(49, 89, 23);
@@ -29,6 +32,8 @@
     -fx-border-radius: 5;
     -fx-padding: 3 6 6 6;
 }
+
+#
 
 .borders{
     -fx-border-color: rgb(103, 100, 78);
