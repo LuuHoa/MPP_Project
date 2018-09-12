@@ -1,6 +1,5 @@
 package ui;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import business.LibraryStaff;
@@ -45,6 +44,10 @@ public class LoginController {
 					if(staff.getMemberRole().equals("Admin")) {
 					LoginScreen login =  new LoginScreen();
 					login.openAdminScreen();
+					}else if (staff.getMemberRole().equals("Librarian")) {
+						
+					}else if(staff.getMemberRole().equals("Both")){
+						
 					}
 					break;
 				}

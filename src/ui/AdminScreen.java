@@ -72,7 +72,7 @@ public class AdminScreen extends Stage {
 		
         
 		backButton.setOnAction(evt -> {
-			primaryStage.show();
+		
 			hide();
 		});
 		
@@ -87,6 +87,10 @@ public class AdminScreen extends Stage {
 	       
 		viewButton.setOnAction(evt -> {
 			//todo link to kim code
+			
+			AddNewBookScreen newBookScreen = AddNewBookScreen.INSTANCE;
+			newBookScreen.setStage(primaryStage);
+			newBookScreen.show();  
 			hide();	
 		});
         Scene scene = new Scene(grid, 600, 400);  

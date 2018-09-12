@@ -94,6 +94,13 @@ public class BookCollectionController implements Initializable {
 		bookCopiesCol
 				.setCellValueFactory(c -> new SimpleStringProperty(String.valueOf(c.getValue().getNumTotalCopies())));
 
+<<<<<<< .mine
+
+
+=======
+	//	addCopiesCol.setCellFactory(c -> new SimpleStringProperty());
+	//	addCopiesCol.setCellFactory(TextFieldTableCell.forTableColumn());
+>>>>>>> .theirs
 	}
 
 }
