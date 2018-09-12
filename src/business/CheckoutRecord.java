@@ -6,6 +6,7 @@ import java.util.List;
 
 public class CheckoutRecord  implements Serializable {
 	
+	private static final long serialVersionUID = 5467032815847529663L;
 	private LibraryMember member;
 	private List<CheckOutEntry> checkOutEntries;
 	
@@ -23,6 +24,12 @@ public class CheckoutRecord  implements Serializable {
 	}
 
 	public void addEntry(CheckOutEntry e) {
-		
+		this.checkOutEntries.add(e);
 	}
+
+	@Override
+	public String toString() {
+		return "CheckoutRecord [member=" + member + ", checkOutEntries=" + checkOutEntries + "]";
+	}
+
 }

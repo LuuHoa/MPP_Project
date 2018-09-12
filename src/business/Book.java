@@ -5,6 +5,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.atomic.AtomicInteger;
 
+import dataaccess.storge.DataAccessService;
+
 public class Book implements Serializable {
 
 	private static AtomicInteger count = new AtomicInteger(0);
@@ -16,6 +18,8 @@ public class Book implements Serializable {
 	private int numTotalCopies;
 	private List<BookCopy> itsCopiesList;
 
+	public Book() {};
+	
 	public Book(String ISBN, int checkoutLength, String title, List<Author> authorList) {
 		this.ISBN = ISBN;
 		this.checkoutLength = checkoutLength;
@@ -79,11 +83,14 @@ public class Book implements Serializable {
 
 	public void addBookCopies(int increaseNum) {
 
+		if (increaseNum >=1)
+		{
 		for (int i = 0; i < increaseNum; i++) {
 			BookCopy bc = new BookCopy(this, String.valueOf(count.incrementAndGet()));
 			this.itsCopiesList.add(bc);
 		}
 		this.numTotalCopies = this.numTotalCopies + increaseNum;
+		}
 
 	}
 
@@ -94,5 +101,12 @@ public class Book implements Serializable {
 		return "Book [ISBN=" + ISBN + ", checkoutLength=" + checkoutLength + ", title=" + title + ", authorList="
 				+ authorList + ", numTotalCopies=" + numTotalCopies 
 				+ ", itsCopiesList=" + itsCopiesList + "]";
+	}
+	
+	public BookCopy getNextCopy() {
+		for (BookCopy c : this.getItsCopiesList()) {
+			if (c.isAvailable()) return c;
+		}
+		return null;
 	}
 }
