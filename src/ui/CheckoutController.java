@@ -6,6 +6,7 @@ import java.util.List;
 import business.CheckOutEntry;
 import business.LibraryMember;
 import dataaccess.storge.DataAccessService;
+import business.Book;
 import business.BookCopy;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
@@ -33,21 +34,7 @@ public class CheckoutController {
 	@FXML public TableColumn<CheckOutEntry, String> tcDueDate;
 	
 	@FXML void onClickBtnAdd(ActionEvent event) {
-		String id = tID.getText();
-		String isbn = tISBN.getText();
-		lbError.setText("");
-		
-		if(id.equals("")) {
-			lbError.setText("Please enter Member ID");
-		} else if (!DataAccessService.isValidMemberID(id)) {
-			lbError.setText("Member ID is not found");
-		} else if (isbn.equals("")) {
-			lbError.setText("Please enter ISBN number");
-		} else if (!DataAccessService.isBookAvailable(isbn)) {
-			lbError.setText("Book is not available");
-		} else {
-		
-		}
+
 	}
 	
     @FXML void onClickBtnCheckout(ActionEvent event) {
@@ -61,7 +48,7 @@ public class CheckoutController {
                 		);  	
     	// End of removed
 
-    	tcBookTitle.setCellValueFactory(c-> new SimpleStringProperty(c.getValue().getBook().getTitle()));
+    	tcBookTitle.setCellValueFactory(c-> new SimpleStringProperty(c.getValue().getBookCopy().getOrgBook().getTitle()));
     	tcCheckoutDate.setCellValueFactory(c-> new SimpleStringProperty(c.getValue().getCheckoutDate().toString()));
     	tcDueDate.setCellValueFactory(c-> new SimpleStringProperty(c.getValue().getDueDate().toString()));
     }

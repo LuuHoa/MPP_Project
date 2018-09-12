@@ -3,11 +3,12 @@ package business;
 import java.io.Serializable;
 import java.time.LocalDate;
 
-public class CheckOutEntry  implements Serializable {
+public class CheckOutEntry implements Serializable {
 
+	private static final long serialVersionUID = 7508481940058530471L;
 	private LocalDate checkoutDate;
 	private LocalDate dueDate;
-	private Book book;
+	private BookCopy bookCopy;
 	
 	public LocalDate getCheckoutDate() {
 		return checkoutDate;
@@ -15,13 +16,18 @@ public class CheckOutEntry  implements Serializable {
 	public LocalDate getDueDate() {
 		return dueDate;
 	}
-	public Book getBook() {
-		return book;
+	public BookCopy getBookCopy() {
+		return bookCopy;
 	}
 	
-	public CheckOutEntry(LocalDate checkoutDate, Book b) {
+	public CheckOutEntry(LocalDate checkoutDate, BookCopy b) {
 		this.checkoutDate = checkoutDate;
-		this.dueDate = LocalDate.ofEpochDay(b.getCheckoutLength());
-		this.book = b;
+		this.dueDate = LocalDate.ofEpochDay(b.getOrgBook().getCheckoutLength());
+		this.bookCopy = b;
+	}
+	
+	@Override
+	public String toString() {
+		return "CheckOutEntry [checkoutDate=" + checkoutDate + ", dueDate=" + dueDate + ", book=" + bookCopy + "]";
 	}
 }
