@@ -94,6 +94,10 @@ public class DataAccessService {
 		lm2.add(new Book("0061964362", 7, "Book 2", null));
 		lm2.add(new Book("0061964363", 21, "Book 3", null, 2));
 		lm2.add(new Book("0061964364", 7, "Book 4", null, 2));
+		
+		
+		
+		
 		System.out.println(lm2);
 		WriteObjectToFile(bookFilepath, lm2);
 		// End

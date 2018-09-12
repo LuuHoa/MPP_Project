@@ -69,9 +69,6 @@ public class BookCollectionController implements Initializable {
 		else
 			return;
 		
-		bookCopiesCol
-		.setCellValueFactory(c -> new SimpleStringProperty(String.valueOf(c.getValue().getNumTotalCopies())));
-		addCopiesCol.setText("");
 	}
 
 	@Override
@@ -79,7 +76,6 @@ public class BookCollectionController implements Initializable {
 		// TODO Auto-generated method stub
 		booksData = DataAccessService.ReadBookFromFile();
 		bookTbl.getItems().addAll(booksData);
-
 		bookTbl.setEditable(true);
 
 		title.setText("Welcome to Uniqlo");
@@ -89,7 +85,8 @@ public class BookCollectionController implements Initializable {
 		bookCopiesCol
 				.setCellValueFactory(c -> new SimpleStringProperty(String.valueOf(c.getValue().getNumTotalCopies())));
 
-		addCopiesCol.setCellFactory(TextFieldTableCell.forTableColumn());
+		addCopiesCol.setCellFactory(c -> new SimpleStringProperty(""));
+	//	addCopiesCol.setCellFactory(TextFieldTableCell.forTableColumn());
 	}
 
 }

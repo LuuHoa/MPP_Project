@@ -30,7 +30,7 @@
                   <TableColumn fx:id="bookAuthorsCol" prefWidth="166.0" text="Authors" />
                   <TableColumn fx:id="bookCopiesCol1" prefWidth="129.0" text="Checkout Length" />
                   <TableColumn fx:id="bookCopiesCol" minWidth="8.0" prefWidth="111.0" text="Current Copies" />
-                  <TableColumn prefWidth="86.0" text="Add Copies" />
+                  <TableColumn fx:id="addCopiesCol" prefWidth="86.0" text="Add Copies" />
               </columns>
             </TableView>
             <Button fx:id="addBookBtn" alignment="CENTER" mnemonicParsing="false" onAction="#onClick" text="Add New Book" GridPane.columnIndex="3" GridPane.rowIndex="3" />
