@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="566.0" prefWidth="500.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.CheckoutListController">
+   <children>
+      <AnchorPane prefHeight="504.0" prefWidth="500.0">
+         <children>
+            <TableView fx:id="tvCheckoutRecord" layoutX="28.0" layoutY="146.0" prefHeight="338.0" prefWidth="446.0">
+              <columns>
+                <TableColumn fx:id="tcBookTitle" prefWidth="204.0" text="Title" />
+                <TableColumn fx:id="tcCheckoutDate" minWidth="0.0" prefWidth="121.0" text="Checkout Date" />
+                <TableColumn fx:id="tcDueDate" minWidth="0.0" prefWidth="120.0" text="Due Date" />
+              </columns>
+            </TableView>
+            <Label layoutX="202.0" layoutY="22.0" text="CHECKOUT LIST" />
+            <Label layoutX="36.0" layoutY="74.0" text="Member ID:" />
+            <TextField fx:id="tID" layoutX="119.0" layoutY="69.0" prefHeight="27.0" prefWidth="246.0" />
+            <Button fx:id="btnSearch" layoutX="376.0" layoutY="69.0" mnemonicParsing="false" onAction="#onClickBtnSearch" prefHeight="27.0" prefWidth="85.0" text="Search" />
+            <Label fx:id="lbError" layoutX="30.0" layoutY="117.0" prefHeight="17.0" prefWidth="446.0" textAlignment="CENTER" textFill="#e41212" />
+         </children>
+      </AnchorPane>
+      <Button fx:id="btnPrint" layoutX="227.0" layoutY="525.0" mnemonicParsing="false" onAction="#onClickBtnPrint" text="Print" />
+   </children>
+</AnchorPane>
