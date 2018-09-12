@@ -26,6 +26,8 @@ public class LibraryMember implements Serializable {
 		return phoneNumber;
 	}
 	
+	public LibraryMember() {};
+
 	public LibraryMember(String id, String firstName, String lastName, Address address, String phoneNumber) {
 		this.id = id;
 		this.firstName = firstName;

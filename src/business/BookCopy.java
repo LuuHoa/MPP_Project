@@ -9,6 +9,8 @@ public class BookCopy implements Serializable {
 
 	private Book orgBook;
 
+	public BookCopy() {};
+	
 	public BookCopy(Book orgBook, String copyNum) {
 		this.orgBook = orgBook;
 		this.copyNum = copyNum;

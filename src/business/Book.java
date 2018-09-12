@@ -18,6 +18,8 @@ public class Book implements Serializable {
 	private int numTotalCopies;
 	private List<BookCopy> itsCopiesList;
 
+	public Book() {};
+	
 	public Book(String ISBN, int checkoutLength, String title, List<Author> authorList) {
 		this.ISBN = ISBN;
 		this.checkoutLength = checkoutLength;
