@@ -25,7 +25,6 @@ public class LoginScreen extends Application {
     public void openAdminScreen() {
     	AdminScreen adminScreen = AdminScreen.INSTANCE;
     	adminScreen.setStage(getPrimaryStage());
-		adminScreen.setData(Utilites.getTableList());
         adminScreen.show(); 
     }
 

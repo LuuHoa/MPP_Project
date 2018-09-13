@@ -22,9 +22,10 @@
             <Label layoutX="36.0" layoutY="109.0" text="ISBN number:" />
             <TextField fx:id="tID" layoutX="126.0" layoutY="69.0" prefHeight="27.0" prefWidth="233.0" />
             <TextField fx:id="tISBN" layoutX="126.0" layoutY="104.0" prefHeight="27.0" prefWidth="233.0" />
-            <Button fx:id="btnCheckout" layoutX="210.0" layoutY="504.0" mnemonicParsing="false" onAction="#onClickBtnCheckout" text="Check out" />
+            <Button fx:id="btnCheckout" layoutX="259.0" layoutY="504.0" mnemonicParsing="false" onAction="#onClickBtnCheckout" text="Check out" />
             <Label fx:id="lbError" layoutX="33.0" layoutY="165.0" prefHeight="17.0" prefWidth="438.0" textAlignment="CENTER" textFill="#f21717" />
             <Button fx:id="btnAdd" layoutX="376.0" layoutY="69.0" mnemonicParsing="false" onAction="#onClickBtnAdd" prefHeight="27.0" prefWidth="85.0" text="Add" />
+            <Button fx:id="back_btn" layoutX="184.0" layoutY="504.0" mnemonicParsing="false" onAction="#handleBackButtonAction" text="Back" />
          </children>
       </AnchorPane>
    </children>

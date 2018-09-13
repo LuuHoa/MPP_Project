@@ -53,6 +53,9 @@ public class BookCollectionController implements Initializable {
 	@FXML
 	Button addBookBtn;
 
+	@FXML
+	public Button back_btn;
+	
 	private final ObservableList<Book> data = FXCollections.observableArrayList(new Book("Jacob", 7, "Smith", null),
 			new Book("Isabella", 7, "Johnson", null), new Book("Ethan", 7, "Williams", null),
 			new Book("Emma", 7, "Jones", null), new Book("Michael", 7, "Brown", null));
@@ -70,7 +73,17 @@ public class BookCollectionController implements Initializable {
 		addNewBook.show();  
 	
 	}
-
+	@FXML
+	public void handleBackButtonAction(ActionEvent event) {
+		Node source = (Node) event.getSource();
+		Stage theStage = (Stage)source.getScene().getWindow();
+		
+		AdminScreen admin = AdminScreen.INSTANCE;
+		admin.setStage(theStage);
+		admin.show(); 
+        theStage.hide();
+	}
+	
 	public void onEdit(ActionEvent event) {
 		// Parent root;
 		 

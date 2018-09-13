@@ -42,5 +42,6 @@
       <Label layoutX="30.0" layoutY="435.0" text="Bio" />
       <Button fx:id="save_btn" layoutX="364.0" layoutY="515.0" mnemonicParsing="false" onAction="#handleSaveButtonAction" text="Save" />
       <Label fx:id="error_txt" layoutX="23.0" layoutY="520.0" prefHeight="17.0" prefWidth="327.0" />
+      <Button fx:id="back_btn" layoutX="287.0" layoutY="515.0" mnemonicParsing="false" onAction="#handleBackButtonAction" text="Back" />
    </children>
 </AnchorPane>

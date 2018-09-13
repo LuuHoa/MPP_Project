@@ -25,6 +25,8 @@ public class AddNewBookController {
 	
 	@FXML
 	public Button save_btn;
+	@FXML
+	public Button back_btn;
 
 	@FXML
 	public TextField title;
@@ -65,6 +67,18 @@ public class AddNewBookController {
 
 		System.out.println(d);
 	}
+	
+	@FXML
+	public void handleBackButtonAction(ActionEvent event) {
+		Node source = (Node) event.getSource();
+		Stage theStage = (Stage)source.getScene().getWindow();
+		
+		BookCollectionScreen addCollection = BookCollectionScreen.INSTANCE;
+		addCollection.setStage(theStage);
+		addCollection.show(); 
+        theStage.hide();
+	}
+	
 	@FXML
 	public void handleSaveButtonAction(ActionEvent event) {
 		
@@ -90,23 +104,28 @@ public class AddNewBookController {
 				!telphone.equals("")&& !tilelStr.equals("")&&  !isbnStr.equals("")&&!bioStr.equals("")) {
 			List<LibraryMember> mebers = DataAccessService.getMemberLists();
 			
-			Address address = new Address(streetStr,cityStr,stateStr,  zipStr );
-			List<Author> authorList = new ArrayList<>();
-			authorList.add(new Author(firstName,lastName ,address,telphoneStr, bioStr ));
-			Book book = new Book(isbnStr, duration, tilelStr, authorList);
+			if(DataAccessService.getBook(isbnStr) == null) {
+				Address address = new Address(streetStr,cityStr,stateStr,  zipStr );
+				List<Author> authorList = new ArrayList<>();
+				authorList.add(new Author(firstName,lastName ,address,telphoneStr, bioStr ));
+				Book book = new Book(isbnStr, duration, tilelStr, authorList);
+				
+				error_txt.setText("");
+				DataAccessService.addNewBook(book);
+				System.out.println("book added to the list");
+				
+				Node source = (Node) event.getSource();
+				Stage theStage = (Stage)source.getScene().getWindow();
+				
+				BookCollectionScreen addCollection = BookCollectionScreen.INSTANCE;
+				addCollection.setStage(theStage);
+				addCollection.show(); 
+		        theStage.hide();
+			}
+			else {
+				error_txt.setText("Book already exists");
+			}
 			
-			error_txt.setText("");
-			DataAccessService.addNewBook(book);
-			System.out.println("book added to the list");
-			
-			Node source = (Node) event.getSource();
-			Stage theStage = (Stage)source.getScene().getWindow();
-			
-			BookCollectionScreen addCollection = BookCollectionScreen.INSTANCE;
-			addCollection.setStage(theStage);
-//			adminScreen.setData(Utilites.getTableList());
-			addCollection.show(); 
-	        theStage.hide();
 			
 		}else {
 		

@@ -29,6 +29,7 @@ public class DataAccessService {
 	public static List<Book> allBooks;
 	public static List<LibraryMember> allMembers;
 	public static List<CheckoutRecord> allRecords;
+	
 
 	public static List<LibraryStaff> getLibaryMembers() {
 

@@ -17,6 +17,8 @@ import javafx.stage.Stage;
 public class AddNewMemberController {
 	@FXML
 	public Button save_btn;
+	@FXML
+	public Button back_btn;
 
 	@FXML
 	public TextField first_name;
@@ -37,6 +39,16 @@ public class AddNewMemberController {
 	@FXML
 	public Label error_txt;
 	
+	@FXML
+	public void handleBackButtonAction(ActionEvent event) {
+		Node source = (Node) event.getSource();
+		Stage theStage = (Stage)source.getScene().getWindow();
+		
+		AdminScreen adminScreen = AdminScreen.INSTANCE;
+    	adminScreen.setStage(theStage);
+        adminScreen.show(); 
+        theStage.hide();
+	}
 	@FXML
 	public void handleSaveButtonAction(ActionEvent event) {
 		
@@ -66,7 +78,6 @@ public class AddNewMemberController {
 			
 			AdminScreen adminScreen = AdminScreen.INSTANCE;
 	    	adminScreen.setStage(theStage);
-			adminScreen.setData(Utilites.getTableList());
 	        adminScreen.show(); 
 	        theStage.hide();
 			

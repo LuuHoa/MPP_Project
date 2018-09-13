@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import business.Utilites;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -19,7 +20,18 @@ public class LibrarianController implements Initializable {
     @FXML private Button sceneButton1;
     @FXML private Button sceneButton2;
     @FXML private Button sceneButton3;
+    @FXML private Button back_btn;
     
+    @FXML
+    public void handleBackButtonAction (ActionEvent event) {
+    	Node source = (Node) event.getSource();
+		Stage theStage = (Stage)source.getScene().getWindow();
+		
+		AdminScreen adminScreen = AdminScreen.INSTANCE;
+    	adminScreen.setStage(theStage);
+        adminScreen.show(); 
+        theStage.hide();
+    }
     
     @FXML
     public void handleMenuButtonAction (ActionEvent event) throws IOException {
@@ -56,7 +68,11 @@ public class LibrarianController implements Initializable {
     }
 
     @Override
-    public void initialize(URL location, ResourceBundle resources) { }
+    public void initialize(URL location, ResourceBundle resources) { 
+    	if (Utilites.getUserType().equals("Librarian")) {
+    		back_btn.setVisible(false);
+		}
+    }
     
 
 }

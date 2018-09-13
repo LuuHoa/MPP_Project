@@ -29,5 +29,6 @@
       <TextField fx:id="telphone" layoutX="205.0" layoutY="284.0" />
       <Button fx:id="save_btn" layoutX="324.0" layoutY="335.0" mnemonicParsing="false" onAction="#handleSaveButtonAction" text="Save" />
       <Label fx:id="error_txt" layoutX="22.0" layoutY="340.0" prefHeight="17.0" prefWidth="275.0" />
+      <Button fx:id="back_btn" layoutX="238.0" layoutY="335.0" mnemonicParsing="false" onAction="#handleBackButtonAction" text="Back" />
    </children>
 </AnchorPane>

@@ -15,12 +15,14 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.paint.Color;
+import javafx.stage.Stage;
 
 
 public class CheckoutController {
@@ -35,6 +37,21 @@ public class CheckoutController {
 	@FXML public TableColumn<CheckOutEntry, String> tcBookTitle;
 	@FXML public TableColumn<CheckOutEntry, String> tcCheckoutDate;
 	@FXML public TableColumn<CheckOutEntry, String> tcDueDate;
+	
+	
+	@FXML
+	public Button back_btn;
+
+	@FXML
+	public void handleBackButtonAction(ActionEvent event) {
+		Node source2 = (Node) event.getSource();
+		Stage theStage = (Stage) source2.getScene().getWindow();
+
+		LibrarianScreen checkout = LibrarianScreen.INSTANCE;
+		checkout.setStage(theStage);
+		checkout.show();
+		theStage.hide();
+	}
 	
 	@FXML void onClickBtnAdd(ActionEvent event) {
 		String id = tID.getText();

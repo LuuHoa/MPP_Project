@@ -32,9 +32,23 @@ public class AddBookCopiesController implements Initializable {
 
 	@FXML
 	Button submit;
-
+	@FXML
+	public Button back_btn;
+	
 	Book choseBook;
 
+	@FXML
+	public void handleBackButtonAction(ActionEvent event) {
+		Node source = (Node) event.getSource();
+		Stage theStage = (Stage)source.getScene().getWindow();
+		
+		BookCollectionScreen addCollection = BookCollectionScreen.INSTANCE;
+		addCollection.setStage(theStage);
+		addCollection.show(); 
+        theStage.hide();
+	}
+	
+	
 	public void onClick(ActionEvent event) {
 
 		String num = input.getText();

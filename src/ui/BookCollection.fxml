@@ -36,7 +36,8 @@
               </columns>
             </TableView>
             <Button fx:id="addBookBtn" alignment="CENTER" mnemonicParsing="false" onAction="#onClick" text="Add New Book" GridPane.columnIndex="3" GridPane.rowIndex="2" />
-            <Button fx:id="addCopiesBtn" mnemonicParsing="false" onAction="#onEdit" text="App Book Copies" GridPane.columnIndex="3" GridPane.rowIndex="3" />
+            <Button fx:id="addCopiesBtn" mnemonicParsing="false" onAction="#onEdit" text="App Book Copies" GridPane.columnIndex="2" GridPane.rowIndex="2" />
+            <Button fx:id="back_btn" mnemonicParsing="false" onAction="#handleBackButtonAction" text="Back" GridPane.columnIndex="1" GridPane.rowIndex="2" />
          </children>
       </GridPane>
    </children>

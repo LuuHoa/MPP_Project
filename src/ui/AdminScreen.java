@@ -24,18 +24,7 @@ import javafx.stage.Stage;
 
 public class AdminScreen extends Stage {
 	public static final AdminScreen INSTANCE = new AdminScreen();
-//	private TableView<MemberList> table = new TableView<MemberList>();
 
-	public void setData(ObservableList<MemberList> members) {
-//		table.refresh();	
-//		table.getColumns().get(0).setVisible(false);
-//		table.getColumns().get(0).setVisible(true);
-//	
-//		table.setItems(members);
-//		table.getItems().clear();
-//		table.getItems().addAll(Utilites.getTableList_());
-//	
-	}
 
 	Stage primaryStage;
 
@@ -57,7 +46,7 @@ public class AdminScreen extends Stage {
 			e.printStackTrace();
 		}
 
-		setTitle("Book Collection");
+		setTitle("Member List");
 
 		// show();
 	}

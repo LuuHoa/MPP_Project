@@ -7,7 +7,16 @@ import dataaccess.storge.DataAccessService;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
-public class Utilites {
+public  class Utilites {
+	public static String userType;
+	public static String getUserType() {
+		return userType;
+	}
+	
+	public static void setUserType(String type) {
+		userType = type;
+	}
+	
 	public static ObservableList<MemberList>  getTableList(){
 		
 

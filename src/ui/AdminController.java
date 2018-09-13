@@ -16,7 +16,7 @@ import javafx.scene.control.TableView;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
-public class AdminController implements Initializable{
+public class AdminController implements Initializable {
 	@FXML
 	Text title;
 
@@ -40,53 +40,61 @@ public class AdminController implements Initializable{
 	Button viewBook;
 
 	@FXML
-	Button back;
+	Button checkout;
+
 	@FXML
 	public void addUserEvent(ActionEvent event) {
 		Node source = (Node) event.getSource();
-		Stage theStage = (Stage)source.getScene().getWindow();
-		
+		Stage theStage = (Stage) source.getScene().getWindow();
+
 		AddNewMemberScreen newMemberScreen = AddNewMemberScreen.INSTANCE;
 		newMemberScreen.setStage(theStage);
-		newMemberScreen.show();  
+		newMemberScreen.show();
 		theStage.hide();
 	}
+
 	@FXML
 	public void viewBook(ActionEvent event) {
 		Node source = (Node) event.getSource();
-		Stage theStage = (Stage)source.getScene().getWindow();
-		
+		Stage theStage = (Stage) source.getScene().getWindow();
+
 		BookCollectionScreen bookCollection = BookCollectionScreen.INSTANCE;
 		bookCollection.setStage(theStage);
-		bookCollection.show();  
+		bookCollection.show();
 		theStage.hide();
 	}
+
 	@FXML
-	public void back(ActionEvent event) {
-//		Node source = (Node) event.getSource();
-//		Stage theStage = (Stage)source.getScene().getWindow();
-//		
-//		
-//		Stage mainStage = LoginScreen.getPrimaryStage();
-//		mainStage.show();
-//		theStage.hide();
+	public void checkOut(ActionEvent event) {
+		Node source2 = (Node) event.getSource();
+		Stage theStage = (Stage) source2.getScene().getWindow();
+
+		LibrarianScreen checkout = LibrarianScreen.INSTANCE;
+		checkout.setStage(theStage);
+		checkout.show();
+		theStage.hide();
 	}
-	
+
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		// TODO Auto-generated method stub
-	
-		ObservableList<MemberList> memberList = Utilites. getTableList();
-		
+
+		ObservableList<MemberList> memberList = Utilites.getTableList();
+
 		memenrTbl.getItems().addAll(memberList);
 		memenrTbl.setEditable(true);
-		
+
 		name.setCellValueFactory(c -> c.getValue().getFullName());
 		phone.setCellValueFactory(c -> c.getValue().getPhoneNumber());
 		address.setCellValueFactory(c -> c.getValue().getAddress());
-		
+
 		state.setCellValueFactory(c -> c.getValue().getState());
 		zip.setCellValueFactory(c -> c.getValue().getZip());
+
 		
+		if (Utilites.getUserType().equals("Admin")) {
+			checkout.setVisible(false);
+		}
+
 	}
 }

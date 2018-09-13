@@ -25,5 +25,6 @@
             <Label fx:id="lbError" layoutX="30.0" layoutY="117.0" prefHeight="17.0" prefWidth="446.0" textAlignment="CENTER" textFill="#e41212" />
          </children>
       </AnchorPane>
+      <Button fx:id="back_btn" layoutX="341.0" layoutY="504.0" mnemonicParsing="false" onAction="#handleBackButtonAction" text="Back" />
    </children>
 </AnchorPane>

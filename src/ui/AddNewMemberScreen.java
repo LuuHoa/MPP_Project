@@ -29,7 +29,7 @@ public class AddNewMemberScreen  extends Stage {
 			e.printStackTrace();
 		}
 
-		setTitle("Welcome to our Library");
+		setTitle("Add new Member");
 	
 		//show();
 	}

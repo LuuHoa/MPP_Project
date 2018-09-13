@@ -41,6 +41,7 @@
                <padding>
                   <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                </padding></TextField>
+            <Button fx:id="back_btn" mnemonicParsing="false" onAction="#handleBackButtonAction" text="Back" GridPane.columnIndex="1" GridPane.rowIndex="4" />
          </children>
       </GridPane>
    </children>

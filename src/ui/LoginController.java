@@ -45,32 +45,25 @@ public class LoginController {
 			for (LibraryStaff staff : staffList) {
 				if (staff.getId().equals(id) && staff.getPassword().equals(password)) {
 					error_txt.setText("valid id  Password : " + staff.getMemberRole());
-					if (staff.getMemberRole().equals("Admin")) {
-//					LoginScreen login = LoginScreen.INSTANCE;
-//					login.openAdminScreen();
-						
-						Node source = (Node) event.getSource();
-						Stage theStage = (Stage)source.getScene().getWindow();
-						
-						AdminScreen adminScreen = AdminScreen.INSTANCE;
-				    	adminScreen.setStage(theStage);
-						adminScreen.setData(Utilites.getTableList());
-				        adminScreen.show(); 
-				        theStage.hide();
+					Utilites.setUserType(staff.getMemberRole());
+					if (staff.getMemberRole().equals("Librarian")) {
 
-					} else if (staff.getMemberRole().equals("Librarian")) {
-						
-						
 						Node source2 = (Node) event.getSource();
-						Stage theStage = (Stage)source2.getScene().getWindow();
-						
+						Stage theStage = (Stage) source2.getScene().getWindow();
+
 						LibrarianScreen checkout = LibrarianScreen.INSTANCE;
 						checkout.setStage(theStage);
-						checkout.show(); 
-				        theStage.hide();
+						checkout.show();
+						theStage.hide();
 
-					} else if (staff.getMemberRole().equals("Both")) {
+					} else  {
+						Node source = (Node) event.getSource();
+						Stage theStage = (Stage) source.getScene().getWindow();
 
+						AdminScreen adminScreen = AdminScreen.INSTANCE;
+						adminScreen.setStage(theStage);
+						adminScreen.show();
+						theStage.hide();
 					}
 					break;
 				}

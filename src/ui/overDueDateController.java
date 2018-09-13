@@ -15,12 +15,14 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.paint.Color;
+import javafx.stage.Stage;
 
 public class overDueDateController {
 	@FXML
@@ -44,6 +46,20 @@ public class overDueDateController {
 	@FXML
 	public TableColumn<OverDue, String> tcDueBack;
 
+	@FXML
+	public Button back_btn;
+
+	@FXML
+	public void handleBackButtonAction(ActionEvent event) {
+		Node source2 = (Node) event.getSource();
+		Stage theStage = (Stage) source2.getScene().getWindow();
+
+		LibrarianScreen checkout = LibrarianScreen.INSTANCE;
+		checkout.setStage(theStage);
+		checkout.show();
+		theStage.hide();
+	}
+
 	public void onClickBtnSearch(ActionEvent event) {
 		this.tvOverDue.getItems().clear();
 		lbError.setText("");
@@ -54,35 +70,34 @@ public class overDueDateController {
 		try {
 
 			Book searchBook = DataAccessService.getBook(tID.getText());
-			
+
 			List<OverDue> ov = new ArrayList<OverDue>();
 			for (CheckoutRecord rec : DataAccessService.allRecords) {
-				String member = rec.getMember().getId() +" "+ rec.getMember().getFirstName() + " "
+				String member = rec.getMember().getId() + " " + rec.getMember().getFirstName() + " "
 						+ rec.getMember().getLastName();
 				for (CheckOutEntry e : rec.getCheckOutEntries()) {
 					if (e.getBookCopy().getOrgBook().equals(searchBook) && e.getDueDate().isBefore(LocalDate.now())) {
-					    //System.out.println(e);
+						// System.out.println(e);
 						Book org = e.getBookCopy().getOrgBook();
-						//System.out.println(org.toString());
+						// System.out.println(org.toString());
 						ov.add(new OverDue(org.getISBN(), org.getTitle(), e.getBookCopy().getCopyNum(), member,
 								e.getDueDate().toString()));
 					}
 				}
 			}
-			//System.out.println(ov.size());
+			// System.out.println(ov.size());
 			ObservableList<OverDue> data = FXCollections.observableArrayList(ov);
 			this.tvOverDue.getItems().addAll(data);
-			 
-			
+
 			tcISBN.setCellValueFactory(c -> new SimpleStringProperty(c.getValue().getISBN()));
 			tcTitle.setCellValueFactory(c -> new SimpleStringProperty(c.getValue().getTitle()));
 			tcMember.setCellValueFactory(c -> new SimpleStringProperty(c.getValue().getMember()));
 			tcCopyNoID.setCellValueFactory(c -> new SimpleStringProperty(c.getValue().getCopyNoId()));
-			tcDueBack.setCellValueFactory(c -> new SimpleStringProperty(String.valueOf(c.getValue().getDueBackDate().toString())));
-			
-			
+			tcDueBack.setCellValueFactory(
+					c -> new SimpleStringProperty(String.valueOf(c.getValue().getDueBackDate().toString())));
+
 		} catch (Exception ex) {
-			//ex.printStackTrace();
+			// ex.printStackTrace();
 			lbError.setText("Wrong input ISBN");
 		}
 
