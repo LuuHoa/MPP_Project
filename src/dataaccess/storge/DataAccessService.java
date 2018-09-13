@@ -195,5 +195,23 @@ public class DataAccessService {
 			return null;
 		}
 	}
+	
+	public static ObservableList<Book> ReadBookFromFile() {
+
+		try {
+			List<Object> books = ReadObjectFromFile(bookFilepath);
+			List<Book> arrbooks = new ArrayList<Book>();
+			for (Object book : books) {
+				arrbooks.add((Book) book);
+			}
+
+			ObservableList<Book> results = FXCollections.observableArrayList(arrbooks);
+			return results;
+
+		} catch (Exception ex) {
+			ex.printStackTrace();
+			return null;
+		}
+}
 
 }
