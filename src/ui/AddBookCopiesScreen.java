@@ -7,9 +7,9 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
-public class AddNewBookScreen extends Stage {	
+public class AddBookCopiesScreen extends Stage {	
 	
-	public static final AddNewBookScreen INSTANCE = new AddNewBookScreen();
+	public static final AddBookCopiesScreen INSTANCE = new AddBookCopiesScreen();
 	Stage primaryStage;
 	
 	
@@ -22,7 +22,8 @@ public class AddNewBookScreen extends Stage {
 
 		Parent root;
 		try {
-			root = FXMLLoader.load(getClass().getResource("/ui/add_new_book.fxml"));
+			root = FXMLLoader.load(getClass().getResource("/ui/AddBookCopies.fxml"));
+		
 			Scene scene = new Scene(root);
 			scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
 			setScene(scene);

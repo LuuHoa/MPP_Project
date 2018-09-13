@@ -60,6 +60,14 @@ public class LoginController {
 
 					} else if (staff.getMemberRole().equals("Librarian")) {
 						
+						
+						Node source2 = (Node) event.getSource();
+						Stage theStage = (Stage)source2.getScene().getWindow();
+						
+						CheckoutScreen checkout = CheckoutScreen.INSTANCE;
+						checkout.setStage(theStage);
+						checkout.show(); 
+				        theStage.hide();
 
 					} else if (staff.getMemberRole().equals("Both")) {
 

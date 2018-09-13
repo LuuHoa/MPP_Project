@@ -102,10 +102,10 @@ public class AddNewBookController {
 			Node source = (Node) event.getSource();
 			Stage theStage = (Stage)source.getScene().getWindow();
 			
-			AdminScreen adminScreen = AdminScreen.INSTANCE;
-	    	adminScreen.setStage(theStage);
-			adminScreen.setData(Utilites.getTableList());
-	        adminScreen.show(); 
+			BookCollectionScreen addCollection = BookCollectionScreen.INSTANCE;
+			addCollection.setStage(theStage);
+//			adminScreen.setData(Utilites.getTableList());
+			addCollection.show(); 
 	        theStage.hide();
 			
 		}else {

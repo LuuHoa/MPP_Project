@@ -7,14 +7,11 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
-public class AddNewBookScreen extends Stage {	
+public class CheckoutScreen extends Stage {	
 	
-	public static final AddNewBookScreen INSTANCE = new AddNewBookScreen();
+	public static final CheckoutScreen INSTANCE = new CheckoutScreen();
 	Stage primaryStage;
-	
-	
 
-	
 	
 	public void  setStage(Stage ps) {
 
@@ -22,7 +19,7 @@ public class AddNewBookScreen extends Stage {
 
 		Parent root;
 		try {
-			root = FXMLLoader.load(getClass().getResource("/ui/add_new_book.fxml"));
+			root = FXMLLoader.load(getClass().getResource("/ui/checkout.fxml"));
 			Scene scene = new Scene(root);
 			scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
 			setScene(scene);
@@ -31,7 +28,7 @@ public class AddNewBookScreen extends Stage {
 			e.printStackTrace();
 		}
 
-		setTitle("Welcome to our Library");
+		setTitle("Checkout Book");
 	
 		//show();
 	}

@@ -88,9 +88,9 @@ public class AdminScreen extends Stage {
 		viewButton.setOnAction(evt -> {
 			//todo link to kim code
 			
-			AddNewBookScreen newBookScreen = AddNewBookScreen.INSTANCE;
-			newBookScreen.setStage(stage);
-			newBookScreen.show();  
+			BookCollectionScreen bookCollection = BookCollectionScreen.INSTANCE;
+			bookCollection.setStage(stage);
+			bookCollection.show();  
 			close();
 		
 		});

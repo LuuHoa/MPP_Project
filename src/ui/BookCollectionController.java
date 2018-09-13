@@ -15,6 +15,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -60,24 +61,40 @@ public class BookCollectionController implements Initializable {
 
 	public void onClick(ActionEvent event) {
 
-		System.out.println("Eman");
+
+		Node source = (Node) event.getSource();
+		Stage theStage = (Stage)source.getScene().getWindow();
+		
+		AddNewBookScreen addNewBook = AddNewBookScreen.INSTANCE;
+		addNewBook.setStage(theStage);
+		addNewBook.show();  
+	
 	}
 
 	public void onEdit(ActionEvent event) {
-		 Parent root;
-	        try {
-	            root = FXMLLoader.load(getClass().getClassLoader().getResource("/ui/AddBookCopies.fxml"));
-	            Stage stage = new Stage();
-	            stage.setTitle("Add new Book Copies");
-	            stage.setScene(new Scene(root, 450, 450));
-	            stage.show();
-	            // Hide this current window (if this is what you want)
-	           // ((Node)(event.getSource())).getScene().getWindow().hide();
-	        }
-	        catch (IOException e) {
-	            e.printStackTrace();
-	        }
-	
+		// Parent root;
+		 
+
+			Node source = (Node) event.getSource();
+			Stage theStage = (Stage)source.getScene().getWindow();
+			
+			AddBookCopiesScreen addNewBookCopy = AddBookCopiesScreen.INSTANCE;
+			addNewBookCopy.setStage(theStage);
+			addNewBookCopy.show();  
+		
+//	        try {
+//	            root = FXMLLoader.load(getClass().getClassLoader().getResource("/ui/AddBookCopies.fxml"));
+//	            Stage stage = new Stage();
+//	            stage.setTitle("Add new Book Copies");
+//	            stage.setScene(new Scene(root, 450, 450));
+//	            stage.show();
+//	            // Hide this current window (if this is what you want)
+//	           // ((Node)(event.getSource())).getScene().getWindow().hide();
+//	        }
+//	        catch (IOException e) {
+//	            e.printStackTrace();
+//	        }
+//	
 	}
 
 	@Override

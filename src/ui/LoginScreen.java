@@ -32,7 +32,10 @@ public class LoginScreen extends Application {
  
         setPrimaryStage(window);
         stage.setTitle("Welcome to our Library");
-        stage.setScene(new Scene(root));
+        Scene scene = new Scene(root);
+        scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
+        stage.setScene(scene);
+      
         stage.show();
        
     }

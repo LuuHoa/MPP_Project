@@ -21,7 +21,9 @@ public class AddNewMemberScreen  extends Stage {
 		Parent root;
 		try {
 			root = FXMLLoader.load(getClass().getResource("/ui/add_member.fxml"));
-			setScene(new Scene(root));
+			Scene scene = new Scene(root);
+			scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
+			setScene(scene);
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
