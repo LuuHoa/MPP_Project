@@ -11,8 +11,10 @@
    <children>
       <GridPane alignment="CENTER_RIGHT" prefHeight="209.0" prefWidth="380.0">
         <columnConstraints>
-          <ColumnConstraints hgrow="SOMETIMES" maxWidth="190.0" minWidth="10.0" prefWidth="159.0" />
-          <ColumnConstraints hgrow="SOMETIMES" maxWidth="224.0" minWidth="10.0" prefWidth="137.0" />
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="190.0" minWidth="10.0" prefWidth="63.0" />
+          <ColumnConstraints hgrow="SOMETIMES" maxWidth="190.0" minWidth="10.0" prefWidth="137.0" />
+          <ColumnConstraints hgrow="SOMETIMES" maxWidth="224.0" minWidth="10.0" prefWidth="146.0" />
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="224.0" minWidth="10.0" prefWidth="45.0" />
         </columnConstraints>
         <rowConstraints>
             <RowConstraints maxHeight="63.0" minHeight="10.0" prefHeight="63.0" vgrow="SOMETIMES" />
@@ -22,20 +24,20 @@
           <RowConstraints maxHeight="151.0" minHeight="10.0" prefHeight="29.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Add Book Copies" GridPane.columnIndex="1" GridPane.columnSpan="2147483647">
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Add Book Copies" GridPane.columnIndex="2" GridPane.columnSpan="2147483647">
                <font>
                   <Font size="14.0" />
                </font>
             </Text>
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Search ISBN" GridPane.rowIndex="1" />
-            <TextField fx:id="search" onAction="#onSearch" GridPane.columnIndex="1" GridPane.rowIndex="1">
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Search ISBN" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+            <TextField fx:id="search" onAction="#onSearch" GridPane.columnIndex="2" GridPane.rowIndex="1">
                <padding>
                   <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                </padding></TextField>
-            <Text fx:id="result" strokeType="OUTSIDE" strokeWidth="0.0" text="Info" GridPane.columnSpan="2147483647" GridPane.rowIndex="2" />
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Numbers of Copies" textOrigin="CENTER" GridPane.rowIndex="3" />
-            <Button fx:id="submit" mnemonicParsing="false" onAction="#onClick" text="Save" GridPane.columnIndex="1" GridPane.rowIndex="4" />
-            <TextField fx:id="input" GridPane.columnIndex="1" GridPane.rowIndex="3">
+            <Text fx:id="result" fill="#cd0909" strokeType="OUTSIDE" strokeWidth="0.0" text="Info" GridPane.columnIndex="1" GridPane.columnSpan="2147483647" GridPane.rowIndex="2" />
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Numbers of Copies" textOrigin="CENTER" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+            <Button fx:id="submit" mnemonicParsing="false" onAction="#onClick" text="Save" GridPane.columnIndex="2" GridPane.rowIndex="4" />
+            <TextField fx:id="input" GridPane.columnIndex="2" GridPane.rowIndex="3">
                <padding>
                   <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                </padding></TextField>

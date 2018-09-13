@@ -45,26 +45,23 @@ public class overDueDateController {
 	public TableColumn<OverDue, String> tcDueBack;
 
 	public void onClickBtnSearch(ActionEvent event) {
+		this.tvOverDue.getItems().clear();
 		lbError.setText("");
 		DataAccessService.loadAllRecords();
 		DataAccessService.loadAllBooks();
 		DataAccessService.loadAllMembers();
-System.out.println(tID.getText());
+
 		try {
 
 			Book searchBook = DataAccessService.getBook(tID.getText());
-			System.out.println(searchBook.toString());
 			
 			List<OverDue> ov = new ArrayList<OverDue>();
 			for (CheckoutRecord rec : DataAccessService.allRecords) {
 				String member = rec.getMember().getId() +" "+ rec.getMember().getFirstName() + " "
 						+ rec.getMember().getLastName();
-				System.out.println(member);
-				System.out.println(rec.getCheckOutEntries().size());
-				
 				for (CheckOutEntry e : rec.getCheckOutEntries()) {
-					if (e.getBookCopy().getOrgBook().equals(searchBook) && e.getDueDate().isAfter(LocalDate.now().minusDays(100))) {
-					System.out.println(e.getBookCopy().getOrgBook().getISBN());
+					if (e.getBookCopy().getOrgBook().equals(searchBook) && e.getDueDate().isBefore(LocalDate.now())) {
+					    System.out.println(e);
 						Book org = e.getBookCopy().getOrgBook();
 						System.out.println(org.toString());
 						ov.add(new OverDue(org.getISBN(), org.getTitle(), e.getBookCopy().getCopyNum(), member,
@@ -73,17 +70,20 @@ System.out.println(tID.getText());
 				}
 			}
 			System.out.println(ov.size());
+			ObservableList<OverDue> data = FXCollections.observableArrayList(ov);
+			this.tvOverDue.getItems().addAll(data);
+			 
 			
-			this.tcISBN.setCellValueFactory(c -> new SimpleStringProperty(c.getValue().getISBN()));
-			this.tcTitle.setCellValueFactory(c -> new SimpleStringProperty(c.getValue().getTitle()));
-			this.tcMember.setCellValueFactory(c -> new SimpleStringProperty(c.getValue().getMember()));
-			this.tcCopyNoID.setCellValueFactory(c -> new SimpleStringProperty(c.getValue().getCopyNoId()));
-			this.tcDueBack.setCellValueFactory(c -> new SimpleStringProperty(String.valueOf(c.getValue().getDueBackDate().toString())));
+			tcISBN.setCellValueFactory(c -> new SimpleStringProperty(c.getValue().getISBN()));
+			tcTitle.setCellValueFactory(c -> new SimpleStringProperty(c.getValue().getTitle()));
+			tcMember.setCellValueFactory(c -> new SimpleStringProperty(c.getValue().getMember()));
+			tcCopyNoID.setCellValueFactory(c -> new SimpleStringProperty(c.getValue().getCopyNoId()));
+			tcDueBack.setCellValueFactory(c -> new SimpleStringProperty(String.valueOf(c.getValue().getDueBackDate().toString())));
 			
 			
 		} catch (Exception ex) {
-			ex.printStackTrace();
-			lbError.setText("Wrong input ISBN1");
+			//ex.printStackTrace();
+			lbError.setText("Wrong input ISBN");
 		}
 
 	}

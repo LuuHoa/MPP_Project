@@ -57,13 +57,10 @@ public class AddBookCopiesController implements Initializable {
 
 	public void onSearch(ActionEvent event) {
 
-		System.out.println("Search");
-
 		DataAccessService.loadAllBooks();
 		choseBook = DataAccessService.getBook(search.getText());
 		result.setTextAlignment(TextAlignment.CENTER);
 		if (choseBook == null)
-
 			result.setText("Wrong Book ISBN");
 		else {
 			result.setText("Title: " + choseBook.getTitle() + " has " + choseBook.getNumTotalCopies() + " copies");
@@ -72,6 +69,14 @@ public class AddBookCopiesController implements Initializable {
 		}
 
 	}
+	
+	
+	public void onExit(ActionEvent event) {
+
+		System.out.println("Exit");
+
+	}
+	
 
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
