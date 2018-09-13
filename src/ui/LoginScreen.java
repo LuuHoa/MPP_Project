@@ -15,7 +15,11 @@ public class LoginScreen extends Application {
 	
 	private static Stage window; 
     public static void main(String[] args) {
-    	DataAccessService.simulateData();
+    	//DataAccessService.simulateData();
+    	DataAccessService.loadAllBooks();
+    	DataAccessService.loadAllMembers();
+    	DataAccessService.loadAllRecords();
+
         Application.launch(LoginScreen.class, args);
     }
     public void openAdminScreen() {

@@ -6,8 +6,7 @@ public class Author implements Serializable{
 	
 	@Override
 	public String toString() {
-		return "Author [firstNAme=" + firstName + ", lastName=" + lastName + ", address=" + address + ", phoneNumber="
-				+ phoneNumber + ", bio=" + bio + "]";
+		return firstName + " " + lastName;
 	}
 	private String firstName;
 	private String lastName;

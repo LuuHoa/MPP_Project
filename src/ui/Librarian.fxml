@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="262.0" prefWidth="233.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.LibrarianController">
+   <children>
+      <Text layoutX="82.0" layoutY="33.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Librarian" wrappingWidth="97.13671875">
+         <font>
+            <Font size="18.0" />
+         </font></Text>
+      <Button fx:id="sceneButton1" layoutX="69.0" layoutY="62.0" mnemonicParsing="false" onAction="#handleMenuButtonAction" prefHeight="25.0" prefWidth="126.0" text="Checkout Book" />
+      <Button fx:id="sceneButton2" layoutX="68.0" layoutY="119.0" mnemonicParsing="false" onAction="#handleMenuButtonAction" prefHeight="25.0" prefWidth="126.0" text="Checkout List" />
+      <Button fx:id="sceneButton3" layoutX="69.0" layoutY="174.0" mnemonicParsing="false" onAction="#handleMenuButtonAction" prefHeight="25.0" prefWidth="126.0" text="Over Due Back" />
+   </children>
+</AnchorPane>
