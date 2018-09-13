@@ -1,6 +1,7 @@
 package ui;
 
 import business.MemberList;
+import business.Utilites;
 import javafx.collections.ObservableList;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
@@ -21,18 +22,23 @@ import javafx.stage.Stage;
 public class AdminScreen extends Stage {
 	public static final AdminScreen INSTANCE = new AdminScreen();
 	private TableView<MemberList> table = new TableView<MemberList>();
-	Stage primaryStage;
 
 	Text pleaseSelect = new Text();
 	
 	public void setData(ObservableList<MemberList> members) {
-		table.setItems(members);
+//		table.refresh();	
+//		table.getColumns().get(0).setVisible(false);
+//		table.getColumns().get(0).setVisible(true);
+//	
+//		table.setItems(members);
+		table.getItems().clear();
+		table.getItems().addAll(Utilites.getTableList_());
+	
 	}
 	
    public AdminScreen() {}
-	public void setStage(Stage ps) {
-
-		primaryStage = ps;
+	public void setStage(Stage stage) {
+	
 		pleaseSelect.setFill(Color.FIREBRICK);
 		
 		setTitle("Member List");
@@ -53,7 +59,6 @@ public class AdminScreen extends Stage {
 		
 		Button addButton = new Button("Add user");
 		Button viewButton = new Button("View Books");
-		Button backButton = new Button("Back to Start");
 		
 		GridPane grid = new GridPane();
 		grid.setAlignment(Pos.CENTER);
@@ -66,22 +71,17 @@ public class AdminScreen extends Stage {
 		btnBox.setAlignment(Pos.CENTER);
 		btnBox.getChildren().add(viewButton);
 		btnBox.getChildren().add(addButton);
-		btnBox.getChildren().add(backButton);
 		grid.add(btnBox,0,4);
 		grid.add(new HBox(10), 0, 5);
 		
-        
-		backButton.setOnAction(evt -> {
-		
-			hide();
-		});
-		
+       
 		 
 		addButton.setOnAction(evt -> {
 			AddNewMemberScreen newMemberScreen = AddNewMemberScreen.INSTANCE;
-			newMemberScreen.setStage(primaryStage);
+			newMemberScreen.setStage(stage);
 			newMemberScreen.show();  
-			hide();
+			close();
+			
 		});
 	       
 	       
@@ -89,12 +89,13 @@ public class AdminScreen extends Stage {
 			//todo link to kim code
 			
 			AddNewBookScreen newBookScreen = AddNewBookScreen.INSTANCE;
-			newBookScreen.setStage(primaryStage);
+			newBookScreen.setStage(stage);
 			newBookScreen.show();  
-			hide();	
+			close();
+		
 		});
         Scene scene = new Scene(grid, 600, 400);  
-		setScene(scene);
+        setScene(scene);
 	}
 
 }

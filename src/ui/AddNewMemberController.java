@@ -4,12 +4,15 @@ import java.util.List;
 
 import business.Address;
 import business.LibraryMember;
+import business.Utilites;
 import dataaccess.storge.DataAccessService;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.stage.Stage;
 
 public class AddNewMemberController {
 	@FXML
@@ -46,7 +49,7 @@ public class AddNewMemberController {
 		String zipStr = zip.getText().toString();
 		String telphoneStr = telphone.getText().toString();
 		
-		AddNewMemberScreen memberScreen = new AddNewMemberScreen();
+		
 		
 		
 		if(!firstName.equals("") && !last_name.equals("")&&  !city.equals("")
@@ -57,7 +60,15 @@ public class AddNewMemberController {
 			DataAccessService.addNewMenber(member);
 			error_txt.setText("");
 			System.out.println("finished handleSaveButtonAction()");
-			memberScreen.showAdminScreen();
+			
+			Node source = (Node) event.getSource();
+			Stage theStage = (Stage)source.getScene().getWindow();
+			
+			AdminScreen adminScreen = AdminScreen.INSTANCE;
+	    	adminScreen.setStage(theStage);
+			adminScreen.setData(Utilites.getTableList());
+	        adminScreen.show(); 
+	        theStage.hide();
 			
 		}else {
 		

@@ -66,6 +66,20 @@ public class CheckoutListController {
 	}
 	
 	@FXML void onClickBtnPrint(ActionEvent event) {
+		ObservableList<CheckOutEntry> data = FXCollections.observableArrayList();
+		data = tvCheckoutRecord.getItems();
 		
+		if (data.size() > 0) {
+    		StringBuilder sb = new StringBuilder();
+            String newLine = System.lineSeparator();
+            sb.append(newLine);
+            sb.append("Book Title    | Checkout Date     | Due Date\n");
+            for (CheckOutEntry entry: data) {
+                sb.append(entry.printCheckoutEntry());
+                sb.append(newLine);
+            }
+            
+            System.out.println(sb.toString());
+		}
 	}
 }

@@ -3,13 +3,17 @@ package ui;
 import java.util.List;
 
 import business.LibraryStaff;
+import business.Utilites;
 import dataaccess.storge.DataAccessService;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.stage.Stage;
+import javafx.stage.Window;
 
 public class LoginController {
 
@@ -40,14 +44,25 @@ public class LoginController {
 
 			for (LibraryStaff staff : staffList) {
 				if (staff.getId().equals(id) && staff.getPassword().equals(password)) {
-					error_txt.setText("valid id  Password : " + staff.getMemberRole() );	
-					if(staff.getMemberRole().equals("Admin")) {
-					LoginScreen login =  new LoginScreen();
-					login.openAdminScreen();
-					}else if (staff.getMemberRole().equals("Librarian")) {
+					error_txt.setText("valid id  Password : " + staff.getMemberRole());
+					if (staff.getMemberRole().equals("Admin")) {
+//					LoginScreen login = LoginScreen.INSTANCE;
+//					login.openAdminScreen();
 						
-					}else if(staff.getMemberRole().equals("Both")){
+						Node source = (Node) event.getSource();
+						Stage theStage = (Stage)source.getScene().getWindow();
 						
+						AdminScreen adminScreen = AdminScreen.INSTANCE;
+				    	adminScreen.setStage(theStage);
+						adminScreen.setData(Utilites.getTableList());
+				        adminScreen.show(); 
+				        theStage.hide();
+
+					} else if (staff.getMemberRole().equals("Librarian")) {
+						
+
+					} else if (staff.getMemberRole().equals("Both")) {
+
 					}
 					break;
 				}

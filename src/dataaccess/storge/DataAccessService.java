@@ -20,22 +20,20 @@ import javafx.collections.ObservableList;
 
 public class DataAccessService {
 
-
-	private static final String bookFilepath="docs/book.txt";
-	private static final String checkoutFilepath="docs/checkout.txt";
+	private static final String bookFilepath = "docs/book.txt";
+	private static final String checkoutFilepath = "docs/checkout.txt";
 	private static final String userFilepath = "src/dataaccess/storge/user.txt";
 	private static final String memberFilepath = "src/dataaccess/storge/member.txt";
-	
+
 	public static List<LibraryMember> allMembers;
 	public static List<Book> allBooks;
 	public static List<CheckoutRecord> allRecords;
-	
+
 	enum StorageType {
 		BOOKS, MEMBERS, RECORD;
 	}
-	
-	public static final String OUTPUT_DIR = System.getProperty("user.dir") 
-			+ "/src/dataaccess/storge/";
+
+	public static final String OUTPUT_DIR = System.getProperty("user.dir") + "/src/dataaccess/storge/";
 
 	public static List<LibraryStaff> getLibaryMembers() {
 
@@ -44,16 +42,25 @@ public class DataAccessService {
 
 	}
 
+	// All Member operations
 	public static void loadAllMembers() {
 		allMembers = new ArrayList<>();
 		allMembers = ((List<LibraryMember>) (Object) ReadObjectFromFile(OUTPUT_DIR + StorageType.MEMBERS));
 	}
 
 	public static void saveAllMembers() {
-		WriteObjectToFile(OUTPUT_DIR + StorageType.MEMBERS, (List<Object>) (Object)allMembers);
+		WriteObjectToFile(OUTPUT_DIR + StorageType.MEMBERS, (List<Object>) (Object) allMembers);
 	}
-	
-	// Book operations
+
+	public static LibraryMember getMember(String ID) {
+		for (LibraryMember m : allMembers) {
+			if (m.getId().equals(ID))
+				return m;
+		}
+		return null;
+	}
+
+	// All book operations
 	public static void loadAllBooks() {
 		allBooks = new ArrayList<>();
 		allBooks = ((List<Book>) (Object) ReadObjectFromFile(OUTPUT_DIR + StorageType.BOOKS));
@@ -61,24 +68,43 @@ public class DataAccessService {
 	}
 
 	public static void saveAllBooks() {
-		WriteObjectToFile(OUTPUT_DIR + StorageType.BOOKS, (List<Object>) (Object)allBooks);
-	}	
-	
+		WriteObjectToFile(OUTPUT_DIR + StorageType.BOOKS, (List<Object>) (Object) allBooks);
+	}
+
 	public static Book getBook(String isbn) {
 		for (Book b : allBooks) {
-			if (b.getISBN().equals(isbn)) return b;
+			if (b.getISBN().equals(isbn))
+				return b;
 		}
 		return null;
-	}	
-	
+	}
+
 	public static void loadAllRecords() {
 		allRecords = new ArrayList<>();
 		allRecords = ((List<CheckoutRecord>) (Object) ReadObjectFromFile(OUTPUT_DIR + StorageType.RECORD));
 	}
-	
+
 	public static void saveAllRecords() {
-		WriteObjectToFile(OUTPUT_DIR + StorageType.RECORD, (List<Object>) (Object)allRecords);
-	}		
+		WriteObjectToFile(OUTPUT_DIR + StorageType.RECORD, (List<Object>) (Object) allRecords);
+	}
+
+	public static void addNewBook(Book book) {
+		List<Object> memberList = ReadObjectFromFile(bookFilepath);
+		memberList.add(book);
+
+		WriteObjectToFile(bookFilepath, memberList);
+	}
+
+	public static List<LibraryMember> getMemberLists() {
+		return ((List<LibraryMember>) (Object) ReadObjectFromFile(memberFilepath));
+	}
+
+	public static void addNewMenber(LibraryMember member) {
+		List<Object> memberList = ReadObjectFromFile(memberFilepath);
+		memberList.add(member);
+
+		WriteObjectToFile(memberFilepath, memberList);
+	}
 
 	public static void simulateData() {
 
@@ -95,29 +121,34 @@ public class DataAccessService {
 
 		// To be removed
 		List<Object> lm = new ArrayList<>();
-		LibraryMember mem1 = new LibraryMember("01", "Hai", "Orsi", new Address("620 Gonzales Drive", "Long Beach", "NY", "11561"), "123456789");
-		LibraryMember mem2 = new LibraryMember("02", "Hai", "Orsi", new Address("9268 Arcadia Dr", "Lakewood", "NJ", "08701"), "123456789");
-		LibraryMember mem3 = new LibraryMember("03", "Hai", "Orsi", new Address("7807 Lees Creek Street", "Upper Marlboro", "MD", "20772"), "123456789");
-		LibraryMember mem4 = new LibraryMember("04", "Hai", "Orsi", new Address("8157 Heather Drive", "Tampa", "FL", "33604"), "123456789");
-		LibraryMember mem5 = new LibraryMember("05", "Hai", "Orsi", new Address("75 Deerfield Rd", "Boca Raton", "FL", "33428"), "123456789");
+		LibraryMember mem1 = new LibraryMember("01", "Hai", "Orsi",
+				new Address("620 Gonzales Drive", "Long Beach", "NY", "11561"), "123456789");
+		LibraryMember mem2 = new LibraryMember("02", "Hai", "Orsi",
+				new Address("9268 Arcadia Dr", "Lakewood", "NJ", "08701"), "123456789");
+		LibraryMember mem3 = new LibraryMember("03", "Hai", "Orsi",
+				new Address("7807 Lees Creek Street", "Upper Marlboro", "MD", "20772"), "123456789");
+		LibraryMember mem4 = new LibraryMember("04", "Hai", "Orsi",
+				new Address("8157 Heather Drive", "Tampa", "FL", "33604"), "123456789");
+		LibraryMember mem5 = new LibraryMember("05", "Hai", "Orsi",
+				new Address("75 Deerfield Rd", "Boca Raton", "FL", "33428"), "123456789");
 		lm.add(mem1);
 		lm.add(mem2);
 		lm.add(mem3);
 		lm.add(mem4);
 		lm.add(mem5);
 		WriteObjectToFile(OUTPUT_DIR + StorageType.MEMBERS, lm);
-		
+
 		List<Object> lm2 = new ArrayList<>();
 		Book b1 = new Book("0061964361", 21, "Book 1", null);
 		Book b2 = new Book("0061964362", 7, "Book 2", null);
-		Book b3 = new Book("0061964363", 21, "Book 3", null,2);
-		Book b4 = new Book("0061964364", 7, "Book 4", null,2);
+		Book b3 = new Book("0061964363", 21, "Book 3", null, 2);
+		Book b4 = new Book("0061964364", 7, "Book 4", null, 2);
 		lm2.add(b1);
 		lm2.add(b2);
 		lm2.add(b3);
 		lm2.add(b4);
 		WriteObjectToFile(OUTPUT_DIR + StorageType.BOOKS, lm2);
-		
+
 		List<Object> lm3 = new ArrayList<>();
 		CheckOutEntry en1 = new CheckOutEntry(LocalDate.now(), b1.getNextCopy());
 		CheckOutEntry en2 = new CheckOutEntry(LocalDate.now(), b2.getNextCopy());
@@ -129,7 +160,7 @@ public class DataAccessService {
 		lm3.add(cr);
 		System.out.println(cr);
 		WriteObjectToFile(OUTPUT_DIR + StorageType.RECORD, lm3);
-		// End		
+		// End
 	}
 
 	private static void WriteObjectToFile(String filepath, List<Object> serObj) {

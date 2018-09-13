@@ -12,14 +12,7 @@ public class AddNewMemberScreen  extends Stage {
 	public static final AddNewMemberScreen INSTANCE = new AddNewMemberScreen();
 	Stage primaryStage;
 	
-	
-	public void showAdminScreen() {
-	//	primaryStage.show();
-		System.out.println("in showAdminScreen()");
-		primaryStage.hide();
-	}
-	
-	
+
 	
 	public void  setStage(Stage ps) {
 

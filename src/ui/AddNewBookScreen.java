@@ -13,12 +13,7 @@ public class AddNewBookScreen extends Stage {
 	Stage primaryStage;
 	
 	
-	public void showBookListScreen() {
-	//	primaryStage.show();
-		System.out.println("in showAdminScreen()");
-		primaryStage.hide();
-	}
-	
+
 	
 	
 	public void  setStage(Stage ps) {

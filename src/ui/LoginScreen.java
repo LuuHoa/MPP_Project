@@ -11,36 +11,38 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 public class LoginScreen extends Application {
+	public static final LoginScreen INSTANCE = new LoginScreen();
 	
-	
-
+	private static Stage window; 
     public static void main(String[] args) {
     	DataAccessService.simulateData();
         Application.launch(LoginScreen.class, args);
     }
-	
-	Stage primaryStage;
-	public void openAdminScreen() {
-		
-		AdminScreen adminScreen = AdminScreen.INSTANCE;
-		adminScreen.setStage(primaryStage);
+    public void openAdminScreen() {
+    	AdminScreen adminScreen = AdminScreen.INSTANCE;
+    	adminScreen.setStage(getPrimaryStage());
 		adminScreen.setData(Utilites.getTableList());
-		adminScreen.show();  
-		//primaryStage.hide();
-		 
-	}
-    
+        adminScreen.show(); 
+    }
+
+
     @Override
     public void start(Stage stage) throws Exception {
         Parent root = FXMLLoader.load(getClass().getResource("/ui/login.fxml"));
-        
-        primaryStage = stage;
-        
+ 
+        setPrimaryStage(window);
         stage.setTitle("Welcome to our Library");
         stage.setScene(new Scene(root));
         stage.show();
-        
        
+    }
+    
+    private void setPrimaryStage(Stage stage) {
+    	LoginScreen.window = stage;
+    }
+
+    static public Stage getPrimaryStage() {
+        return LoginScreen.window;
     }
     
  
