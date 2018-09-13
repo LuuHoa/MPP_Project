@@ -68,7 +68,7 @@ public class AddNewMemberController {
 				&& !state.equals("")&&  !street.equals("")&& !zip.equals("")&& !telphone.equals("")) {
 			List<LibraryMember> mebers = DataAccessService.getMemberLists();
 			Address address = new Address(streetStr,cityStr,stateStr,  zipStr );
-			LibraryMember member = new LibraryMember(""+mebers.size() , firstName, lastName ,address, telphoneStr);
+			LibraryMember member = new LibraryMember("0"+(mebers.size() + 1 ), firstName, lastName ,address, telphoneStr);
 			DataAccessService.addNewMenber(member);
 			error_txt.setText("");
 			System.out.println("finished handleSaveButtonAction()");

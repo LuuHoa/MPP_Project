@@ -23,6 +23,8 @@ public class AdminController implements Initializable {
 	@FXML
 	TableView<MemberList> memenrTbl;
 	@FXML
+	TableColumn<MemberList, String> memberID;
+	@FXML
 	TableColumn<MemberList, String> name;
 	@FXML
 	TableColumn<MemberList, String> phone;
@@ -83,7 +85,7 @@ public class AdminController implements Initializable {
 
 		memenrTbl.getItems().addAll(memberList);
 		memenrTbl.setEditable(true);
-
+		
 		name.setCellValueFactory(c -> c.getValue().getFullName());
 		phone.setCellValueFactory(c -> c.getValue().getPhoneNumber());
 		address.setCellValueFactory(c -> c.getValue().getAddress());
@@ -91,6 +93,7 @@ public class AdminController implements Initializable {
 		state.setCellValueFactory(c -> c.getValue().getState());
 		zip.setCellValueFactory(c -> c.getValue().getZip());
 
+		memberID.setCellValueFactory(c -> c.getValue().getId());
 		
 		if (Utilites.getUserType().equals("Admin")) {
 			checkout.setVisible(false);

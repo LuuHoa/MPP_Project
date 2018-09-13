@@ -28,7 +28,8 @@
                </font></Text>
             <TableView fx:id="memenrTbl" editable="true" prefHeight="267.0" prefWidth="808.0" GridPane.columnSpan="2147483647" GridPane.rowIndex="1">
               <columns>
-                <TableColumn fx:id="name" prefWidth="253.0" text="Name" />
+                  <TableColumn fx:id="memberID" prefWidth="92.0" text="Member ID" />
+                <TableColumn fx:id="name" prefWidth="414.0" text="Name" />
                 <TableColumn fx:id="phone" minWidth="9.0" prefWidth="140.0" text="Phone" />
                   <TableColumn fx:id="address" prefWidth="198.0" text="Address" />
                   <TableColumn fx:id="state" prefWidth="132.0" text="State" />
