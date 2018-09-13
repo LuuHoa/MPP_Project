@@ -63,16 +63,13 @@ System.out.println(tID.getText());
 				System.out.println(rec.getCheckOutEntries().size());
 				
 				for (CheckOutEntry e : rec.getCheckOutEntries()) {
-					System.out.println("????");
-					BookCopy org = e.getBookCopy();
-					System.out.println(org.toString());
-					//if (e.getBookCopy().getOrgBook().equals(searchBook) && e.getDueDate().isAfter(LocalDate.now().minusDays(100))) {
-				/*	System.out.println(e.getBookCopy().getOrgBook().getISBN());
+					if (e.getBookCopy().getOrgBook().equals(searchBook) && e.getDueDate().isAfter(LocalDate.now().minusDays(100))) {
+					System.out.println(e.getBookCopy().getOrgBook().getISBN());
 						Book org = e.getBookCopy().getOrgBook();
 						System.out.println(org.toString());
 						ov.add(new OverDue(org.getISBN(), org.getTitle(), e.getBookCopy().getCopyNum(), member,
-								e.getDueDate().toString()));*/
-				//	}
+								e.getDueDate().toString()));
+					}
 				}
 			}
 			System.out.println(ov.size());
