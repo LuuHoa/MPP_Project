@@ -20,20 +20,19 @@ import javafx.collections.ObservableList;
 
 public class DataAccessService {
 
-	private static final String userFilepath = "src/dataaccess/storge/user.txt";
+	private static final String OUTPUT_DIR = System.getProperty("user.dir") + "/src/dataaccess/storge/";
+	
 	enum StorageType {
-		BOOKS, MEMBERS, RECORD;
+		USERS, BOOKS, MEMBERS, RECORD;
 	}
 
 	public static List<Book> allBooks;
 	public static List<LibraryMember> allMembers;
 	public static List<CheckoutRecord> allRecords;
 
-	public static final String OUTPUT_DIR = System.getProperty("user.dir") + "/src/dataaccess/storge/";
-
 	public static List<LibraryStaff> getLibaryMembers() {
 
-		List<LibraryStaff> staffList = (List<LibraryStaff>) (Object) ReadObjectFromFile(userFilepath);
+		List<LibraryStaff> staffList = (List<LibraryStaff>) (Object) ReadObjectFromFile(OUTPUT_DIR + StorageType.USERS);
 		return staffList;
 
 	}
@@ -112,7 +111,7 @@ public class DataAccessService {
 //		objectList.add(s);
 //		objectList.add(s2);
 //		objectList.add(s3);
-//		WriteObjectToFile(userFilepath, objectList);
+//		WriteObjectToFile(OUTPUT_DIR + StorageType.USERS, objectList);
 //
 //		List<Object> lm = new ArrayList<>();
 //		LibraryMember mem1 = new LibraryMember("01", "Hai", "Orsi",
