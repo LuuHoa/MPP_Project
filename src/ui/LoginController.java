@@ -64,7 +64,7 @@ public class LoginController {
 						Node source2 = (Node) event.getSource();
 						Stage theStage = (Stage)source2.getScene().getWindow();
 						
-						CheckoutScreen checkout = CheckoutScreen.INSTANCE;
+						LibrarianScreen checkout = LibrarianScreen.INSTANCE;
 						checkout.setStage(theStage);
 						checkout.show(); 
 				        theStage.hide();
