@@ -32,8 +32,9 @@ public class MemberList {
 	}
 	
 	
-	public String getId() {
-		return id.get();
+	public SimpleStringProperty getId() {
+		return id;
+
 	}
 	
 	public String getName() {
