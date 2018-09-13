@@ -97,7 +97,7 @@ public class AddNewBookController {
 			
 			error_txt.setText("");
 			DataAccessService.addNewBook(book);
-			System.out.println("finished handleSaveButtonAction()");
+			System.out.println("book added to the list");
 			
 			Node source = (Node) event.getSource();
 			Stage theStage = (Stage)source.getScene().getWindow();

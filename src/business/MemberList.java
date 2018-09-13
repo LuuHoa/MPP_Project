@@ -45,11 +45,13 @@ public class MemberList {
 	}
 	
 
-	public String getLastName() {
-		return lastName.get();
+	
+	public SimpleStringProperty getFullName() {
+		return new SimpleStringProperty(name.get()+ " " + lastName.get());
 	}
-	public String getPhoneNumber() {
-		return phoneNumber.get();
+	
+	public SimpleStringProperty getPhoneNumber() {
+		return phoneNumber;
 	}
 	
 
@@ -61,11 +63,14 @@ public class MemberList {
 		return city.get();
 	}
 
-	public String getState() {
-		return state.get();
+	public SimpleStringProperty getAddress() {
+		return new SimpleStringProperty(street.get() + " " + city.get());
 	}
-	public String getZip() {
-		return zip.get();
+	public SimpleStringProperty getState() {
+		return state;
+	}
+	public SimpleStringProperty getZip() {
+		return zip;
 	}
 	
 	
