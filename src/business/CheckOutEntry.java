@@ -26,8 +26,14 @@ public class CheckOutEntry implements Serializable {
 		this.bookCopy = b;
 	}
 	
-	@Override
-	public String toString() {
-		return "CheckOutEntry [checkoutDate=" + checkoutDate + ", dueDate=" + dueDate + ", book=" + bookCopy + "]";
-	}
+    @Override
+    public String toString() {
+        return "Book copy: " + getBookCopy() + "\nCheckout date: " + getCheckoutDate() + " | Due date: " + getDueDate();
+    }
+    
+    public String printCheckoutEntry(){
+    	String separateLine = String.format("%14s| %18s| %18s\n", "", "", "").replace(' ', '-');
+		String data = String.format("%14s| %18s| %18s", getBookCopy().getOrgBook().getTitle(), getCheckoutDate(), getDueDate());
+		return separateLine + data;
+    }
 }

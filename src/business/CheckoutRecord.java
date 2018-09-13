@@ -28,8 +28,19 @@ public class CheckoutRecord  implements Serializable {
 	}
 
 	@Override
-	public String toString() {
-		return "CheckoutRecord [member=" + member + ", checkOutEntries=" + checkOutEntries + "]";
-	}
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        String newLine = System.lineSeparator();
+        int size = checkOutEntries.size();
+        for (int i = 0; i < size; i++) {
+        	sb.append(checkOutEntries.get(i));
+            sb.append(newLine);
+            if (i != size - 1) {
+	            sb.append("----------------------------------------------------");
+	            sb.append(newLine);
+            }
+        }
+        return sb.toString();
+    }
 
 }
