@@ -22,7 +22,7 @@ public class CheckOutEntry implements Serializable {
 	
 	public CheckOutEntry(LocalDate checkoutDate, BookCopy b) {
 		this.checkoutDate = checkoutDate;
-		this.dueDate = LocalDate.ofEpochDay(b.getOrgBook().getCheckoutLength());
+		this.dueDate = checkoutDate.plusDays(b.getOrgBook().getCheckoutLength());
 		this.bookCopy = b;
 	}
 	
