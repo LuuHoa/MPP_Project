@@ -63,10 +63,12 @@ public class CheckoutController {
 					if (cp == null) {
 						lbError.setText("There is no available copy of this book");
 					} else {
+						System.out.println(mem);
+						System.out.println(cp.getCopyNum());
 						// Create new checkout record
 						CheckoutRecord rc = new CheckoutRecord(mem);
 						cp.setAvailable(false);
-						rc.addEntry(new CheckOutEntry(LocalDate.now(), cp));
+						rc.addEntry(new CheckOutEntry(LocalDate.now().minusDays(30), cp));
 						DataAccessService.allRecords.add(rc);
 						
 				    	ObservableList<CheckOutEntry> data =
