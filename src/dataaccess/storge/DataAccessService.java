@@ -20,7 +20,8 @@ import javafx.collections.ObservableList;
 
 public class DataAccessService {
 
-	private static final String OUTPUT_DIR = System.getProperty("user.dir") + "/src/dataaccess/storge/";
+	//private static final String OUTPUT_DIR = System.getProperty("user.dir") + "/src/dataaccess/storge/";
+	public static final String OUTPUT_DIR = System.getProperty("user.dir") + "/data/";
 	
 	enum StorageType {
 		USERS, BOOKS, MEMBERS, RECORD;
@@ -101,36 +102,44 @@ public class DataAccessService {
 		saveAllMembers();
 	}
 
-//	public static void simulateData() {
+	public static void simulateData() {
 //
-//		LibraryStaff s = new LibraryStaff("11", "123", "Admin");
+/*		LibraryStaff s = new LibraryStaff("11", "123", "Admin");
+
+		LibraryStaff s2 = new LibraryStaff("22", "123", "Librarian");
+		LibraryStaff s3 = new LibraryStaff("33", "123", "Both");
+		
+		LibraryStaff s4 = new LibraryStaff("admin", "123", "Admin");
+
+		LibraryStaff s5 = new LibraryStaff("lib", "123", "Librarian");
+		LibraryStaff s6 = new LibraryStaff("both", "123", "Both");
+
+		List<Object> objectList = new ArrayList<>();
+		objectList.add(s);
+		objectList.add(s2);
+		objectList.add(s3);
+		objectList.add(s4);
+		objectList.add(s5);
+		objectList.add(s6);
+		WriteObjectToFile(OUTPUT_DIR + StorageType.USERS, objectList);*/
 //
-//		LibraryStaff s2 = new LibraryStaff("22", "123", "Librarian");
-//		LibraryStaff s3 = new LibraryStaff("33", "123", "Both");
-//
-//		List<Object> objectList = new ArrayList<>();
-//		objectList.add(s);
-//		objectList.add(s2);
-//		objectList.add(s3);
-//		WriteObjectToFile(OUTPUT_DIR + StorageType.USERS, objectList);
-//
-//		List<Object> lm = new ArrayList<>();
-//		LibraryMember mem1 = new LibraryMember("01", "Hai", "Orsi",
-//				new Address("620 Gonzales Drive", "Long Beach", "NY", "11561"), "123456789");
-//		LibraryMember mem2 = new LibraryMember("02", "Hai", "Orsi",
-//				new Address("9268 Arcadia Dr", "Lakewood", "NJ", "08701"), "123456789");
-//		LibraryMember mem3 = new LibraryMember("03", "Hai", "Orsi",
-//				new Address("7807 Lees Creek Street", "Upper Marlboro", "MD", "20772"), "123456789");
-//		LibraryMember mem4 = new LibraryMember("04", "Hai", "Orsi",
-//				new Address("8157 Heather Drive", "Tampa", "FL", "33604"), "123456789");
-//		LibraryMember mem5 = new LibraryMember("05", "Hai", "Orsi",
-//				new Address("75 Deerfield Rd", "Boca Raton", "FL", "33428"), "123456789");
-//		lm.add(mem1);
-//		lm.add(mem2);
-//		lm.add(mem3);
-//		lm.add(mem4);
-//		lm.add(mem5);
-//		WriteObjectToFile(OUTPUT_DIR + StorageType.MEMBERS, lm);
+/*		List<Object> lm = new ArrayList<>();
+		LibraryMember mem1 = new LibraryMember("01", "Mai", "Tran",
+				new Address("620 Gonzales Drive", "Long Beach", "NY", "11561"), "1898856");
+		LibraryMember mem2 = new LibraryMember("02", "Edman", "Mohammed",
+				new Address("9268 Arcadia Dr", "Lakewood", "NJ", "08701"), "745242452");
+		LibraryMember mem3 = new LibraryMember("03", "Hoa", "Luu",
+				new Address("7807 Lees Creek Street", "Upper Marlboro", "MD", "20772"), "4587545254");
+		LibraryMember mem4 = new LibraryMember("04", "Hai", "Orsi",
+				new Address("8157 Heather Drive", "Tampa", "FL", "33604"), "5324568");
+		LibraryMember mem5 = new LibraryMember("05", "Tom", "Jerry",
+				new Address("75 Deerfield Rd", "Boca Raton", "FL", "33428"), "8524254");
+		lm.add(mem1);
+		lm.add(mem2);
+		lm.add(mem3);
+		lm.add(mem4);
+		lm.add(mem5);
+		WriteObjectToFile(OUTPUT_DIR + StorageType.MEMBERS, lm);*/
 //
 //		List<Object> lm2 = new ArrayList<>();
 //		Book b1 = new Book("0061964361", 21, "Book 1", null);
@@ -154,7 +163,7 @@ public class DataAccessService {
 //		lm3.add(cr);
 //		System.out.println(cr);
 //		WriteObjectToFile(OUTPUT_DIR + StorageType.RECORD, lm3);
-//	}
+	}
 
 	private static void WriteObjectToFile(String filepath, List<Object> serObj) {
 
