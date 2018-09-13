@@ -61,15 +61,15 @@ public class overDueDateController {
 						+ rec.getMember().getLastName();
 				for (CheckOutEntry e : rec.getCheckOutEntries()) {
 					if (e.getBookCopy().getOrgBook().equals(searchBook) && e.getDueDate().isBefore(LocalDate.now())) {
-					    System.out.println(e);
+					    //System.out.println(e);
 						Book org = e.getBookCopy().getOrgBook();
-						System.out.println(org.toString());
+						//System.out.println(org.toString());
 						ov.add(new OverDue(org.getISBN(), org.getTitle(), e.getBookCopy().getCopyNum(), member,
 								e.getDueDate().toString()));
 					}
 				}
 			}
-			System.out.println(ov.size());
+			//System.out.println(ov.size());
 			ObservableList<OverDue> data = FXCollections.observableArrayList(ov);
 			this.tvOverDue.getItems().addAll(data);
 			 

@@ -68,7 +68,7 @@ public class CheckoutController {
 						// Create new checkout record
 						CheckoutRecord rc = new CheckoutRecord(mem);
 						cp.setAvailable(false);
-						rc.addEntry(new CheckOutEntry(LocalDate.now().minusDays(30), cp));
+						rc.addEntry(new CheckOutEntry(LocalDate.now(), cp));
 						DataAccessService.allRecords.add(rc);
 						
 				    	ObservableList<CheckOutEntry> data =

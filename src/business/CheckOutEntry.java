@@ -32,8 +32,8 @@ public class CheckOutEntry implements Serializable {
     }
     
     public String printCheckoutEntry(){
-    	String separateLine = String.format("%14s| %18s| %18s\n", "", "", "").replace(' ', '-');
-		String data = String.format("%14s| %18s| %18s", getBookCopy().getOrgBook().getTitle(), getCheckoutDate(), getDueDate());
+    	String separateLine = String.format("%30s| %18s| %18s\n", "", "", "").replace(' ', '-');
+		String data = String.format("%30s| %18s| %18s", getBookCopy().getOrgBook().getTitle(), getCheckoutDate(), getDueDate());
 		return separateLine + data;
     }
 }

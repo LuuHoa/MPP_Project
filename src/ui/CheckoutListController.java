@@ -73,7 +73,7 @@ public class CheckoutListController {
     		StringBuilder sb = new StringBuilder();
             String newLine = System.lineSeparator();
             sb.append(newLine);
-            sb.append("Book Title    | Checkout Date     | Due Date\n");
+            sb.append("Book Title                    | Checkout Date     | Due Date\n");
             for (CheckOutEntry entry: data) {
                 sb.append(entry.printCheckoutEntry());
                 sb.append(newLine);

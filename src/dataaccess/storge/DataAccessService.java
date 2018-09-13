@@ -164,7 +164,7 @@ public class DataAccessService {
 			ObjectOutputStream objectOut = new ObjectOutputStream(fileOut);
 			objectOut.writeObject(serObj);
 			objectOut.close();
-			System.out.println("The Object  was succesfully written to a file");
+			//System.out.println("The Object  was succesfully written to a file");
 
 		} catch (Exception ex) {
 			ex.printStackTrace();
@@ -179,7 +179,7 @@ public class DataAccessService {
 			ObjectInputStream objectIn = new ObjectInputStream(fileIn);
 
 			List<Object> objectList = (List<Object>) objectIn.readObject();
-			System.out.println("The Object has been read from the file");
+			//System.out.println("The Object has been read from the file");
 			objectIn.close();
 			return objectList;
 
