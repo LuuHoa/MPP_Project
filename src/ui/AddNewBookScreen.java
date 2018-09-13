@@ -31,7 +31,7 @@ public class AddNewBookScreen extends Stage {
 			e.printStackTrace();
 		}
 
-		setTitle("Welcome to our Library");
+		setTitle("Add Book into Library");
 	
 		//show();
 	}

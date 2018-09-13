@@ -6,9 +6,9 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane prefHeight="398.0" prefWidth="557.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.AdminController">
+<AnchorPane prefHeight="402.0" prefWidth="811.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.AdminController">
    <children>
-      <GridPane prefHeight="393.0" prefWidth="886.0">
+      <GridPane layoutY="7.0" prefHeight="395.0" prefWidth="811.0">
         <columnConstraints>
           <ColumnConstraints hgrow="SOMETIMES" maxWidth="390.0" minWidth="10.0" prefWidth="172.0" />
             <ColumnConstraints hgrow="SOMETIMES" maxWidth="390.0" minWidth="10.0" prefWidth="172.0" />
@@ -26,14 +26,14 @@
                <font>
                   <Font size="14.0" />
                </font></Text>
-            <TableView fx:id="memenrTbl" editable="true" prefHeight="267.0" prefWidth="808.0" GridPane.columnSpan="2147483647" GridPane.rowIndex="1">
+            <TableView fx:id="memenrTbl" editable="true" prefHeight="239.0" prefWidth="799.0" GridPane.columnSpan="2147483647" GridPane.rowIndex="1">
               <columns>
-                  <TableColumn fx:id="memberID" prefWidth="92.0" text="Member ID" />
-                <TableColumn fx:id="name" prefWidth="414.0" text="Name" />
-                <TableColumn fx:id="phone" minWidth="9.0" prefWidth="140.0" text="Phone" />
-                  <TableColumn fx:id="address" prefWidth="198.0" text="Address" />
-                  <TableColumn fx:id="state" prefWidth="132.0" text="State" />
-                  <TableColumn fx:id="zip" minWidth="8.0" prefWidth="162.0" text="Zip" />
+                  <TableColumn fx:id="memberID" prefWidth="83.0" text="Member ID" />
+                <TableColumn fx:id="name" prefWidth="196.0" text="Name" />
+                <TableColumn fx:id="phone" minWidth="9.0" prefWidth="107.0" text="Phone" />
+                  <TableColumn fx:id="address" prefWidth="300.0" text="Address" />
+                  <TableColumn fx:id="state" prefWidth="70.0" text="State" />
+                  <TableColumn fx:id="zip" minWidth="0.0" prefWidth="54.0" text="Zip" />
               </columns>
             </TableView>
             <Button fx:id="addUserBtn" alignment="CENTER" mnemonicParsing="false" onAction="#addUserEvent" text="Add User" GridPane.columnIndex="2" GridPane.rowIndex="2" />
