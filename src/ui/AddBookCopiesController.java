@@ -8,6 +8,7 @@ import dataaccess.storge.DataAccessService;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
@@ -16,6 +17,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.text.Text;
 import javafx.scene.text.TextAlignment;
+import javafx.stage.Stage;
 
 public class AddBookCopiesController implements Initializable {
 
@@ -35,7 +37,6 @@ public class AddBookCopiesController implements Initializable {
 
 	public void onClick(ActionEvent event) {
 
-		System.out.println("Save");
 		String num = input.getText();
 		
 		
@@ -46,6 +47,16 @@ public class AddBookCopiesController implements Initializable {
 			DataAccessService.ReadBookFromFile();
 			
 			result.setText("Title: " + choseBook.getTitle() + " now  has " + choseBook.getNumTotalCopies() + " copies");
+			
+			
+			Node source = (Node) event.getSource();
+			Stage theStage = (Stage)source.getScene().getWindow();
+			
+			BookCollectionScreen addCollection = BookCollectionScreen.INSTANCE;
+			addCollection.setStage(theStage);
+//			adminScreen.setData(Utilites.getTableList());
+			addCollection.show(); 
+	        theStage.hide();
 			
 		} catch(Exception ex) {
 			result.setText("Incorrect input"+ ex.getMessage());
