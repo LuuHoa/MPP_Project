@@ -109,4 +109,15 @@ public class Book implements Serializable {
 		}
 		return null;
 	}
+	
+	@Override
+	public boolean equals(Object obj) {
+		// TODO Auto-generated method stub
+		if (obj instanceof Book) {
+		      Book c = (Book) obj;
+		      if (this.ISBN.equals(c.getISBN())) return true;
+		    }
+		    return false;
+
+	}
 }

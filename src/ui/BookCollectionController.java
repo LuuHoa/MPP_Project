@@ -1,5 +1,6 @@
 package ui;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.List;
 import java.util.Random;
@@ -12,7 +13,10 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
@@ -20,6 +24,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.control.cell.TextFieldTableCell;
 import javafx.scene.text.Text;
+import javafx.stage.Stage;
 
 public class BookCollectionController implements Initializable {
 
@@ -59,33 +64,31 @@ public class BookCollectionController implements Initializable {
 	}
 
 	public void onEdit(ActionEvent event) {
-
-		title.setText("Welcome to Uniqlooo");
-	/*	Book editBook = bookTbl.getSelectionModel().getSelectedItem();
-		System.out.println(editBook.toString());
-		
-		
-		int increaseNum = Integer.parseInt(addCopiesCol.getText());
-		if (1 >= increaseNum)
-			editBook.addBookCopies(increaseNum);
-
-		else
-			return;
-
-		addCopiesCol.setCellValueFactory(c -> new SimpleStringProperty(""));
-
-		bookCopiesCol
-				.setCellValueFactory(c -> new SimpleStringProperty(String.valueOf(c.getValue().getNumTotalCopies())));*/
+		 Parent root;
+	        try {
+	            root = FXMLLoader.load(getClass().getClassLoader().getResource("/ui/AddBookCopies.fxml"));
+	            Stage stage = new Stage();
+	            stage.setTitle("Add new Book Copies");
+	            stage.setScene(new Scene(root, 450, 450));
+	            stage.show();
+	            // Hide this current window (if this is what you want)
+	           // ((Node)(event.getSource())).getScene().getWindow().hide();
+	        }
+	        catch (IOException e) {
+	            e.printStackTrace();
+	        }
+	
 	}
 
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		// TODO Auto-generated method stub
-		booksData = DataAccessService.ReadBookFromFile();
+		DataAccessService.loadAllBooks();
+		
+		booksData = FXCollections.observableArrayList(DataAccessService.allBooks);
 		bookTbl.getItems().addAll(booksData);
 		bookTbl.setEditable(true);
 
-		title.setText("Welcome to Uniqlo");
 		bookTitleCol.setCellValueFactory(c -> new SimpleStringProperty(c.getValue().getTitle()));
 		bookISBNCol.setCellValueFactory(c -> new SimpleStringProperty(c.getValue().getISBN()));
 		bookAuthorsCol.setCellValueFactory(c -> new SimpleStringProperty(c.getValue().getAuthorListString()));

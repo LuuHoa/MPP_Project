@@ -10,6 +10,7 @@ import java.util.List;
 
 import business.Address;
 import business.Book;
+import business.BookCopy;
 import business.CheckOutEntry;
 import business.CheckoutRecord;
 import business.LibraryMember;
@@ -157,34 +158,6 @@ public class DataAccessService {
 			System.out.println("The Object has been read from the file");
 			objectIn.close();
 			return objectList;
-
-		} catch (Exception ex) {
-			ex.printStackTrace();
-			return null;
-		}
-	}
-
-	public static void WriteBooksToFile(List<Object> serObj) {
-
-		try {
-			WriteObjectToFile(bookFilepath, serObj);
-
-		} catch (Exception ex) {
-			ex.printStackTrace();
-		}
-	}
-
-	public static ObservableList<Book> ReadBookFromFile() {
-
-		try {
-			List<Object> books = ReadObjectFromFile(bookFilepath);
-			List<Book> arrbooks = new ArrayList<Book>();
-			for (Object book : books) {
-				arrbooks.add((Book) book);
-			}
-
-			ObservableList<Book> results = FXCollections.observableArrayList(arrbooks);
-			return results;
 
 		} catch (Exception ex) {
 			ex.printStackTrace();

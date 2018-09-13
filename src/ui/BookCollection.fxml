@@ -22,7 +22,7 @@
             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <Text fx:id="title" strokeType="OUTSIDE" strokeWidth="0.0" text="Book Collections" textAlignment="CENTER" GridPane.columnSpan="2147483647">
+            <Text fx:id="title" strokeType="OUTSIDE" strokeWidth="0.0" text="Book Collections" textAlignment="CENTER" GridPane.columnIndex="1" GridPane.columnSpan="2147483647">
                <font>
                   <Font size="14.0" />
                </font></Text>

@@ -12,14 +12,16 @@ import javafx.scene.Scene;
 import javafx.scene.layout.BorderPane;
 
 
-public class Main extends Application implements Initializable {
+public class Main extends Application implements Initializable  {
 	@Override
 	public void start(Stage primaryStage) {
 		try {
 			//BorderPane root = new BorderPane();
-			//Parent root =  FXMLLoader.load(getClass().getResource("/ui/BookCollection.fxml"));
+			Parent root =  FXMLLoader.load(getClass().getResource("/ui/BookCollection.fxml"));
 			
-			Parent root =  FXMLLoader.load(getClass().getResource("/ui/AddBookCopies.fxml"));
+			//Parent root =  FXMLLoader.load(getClass().getResource("/ui/AddBookCopies.fxml"));
+			
+			//Parent root =  FXMLLoader.load(getClass().getResource("/ui/overDueDate.fxml"));
 			
 			
 			Scene scene = new Scene(root);

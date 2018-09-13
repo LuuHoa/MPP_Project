@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="553.0" prefWidth="750.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.overDueDateController">
+   <children>
+      <AnchorPane prefHeight="504.0" prefWidth="500.0">
+         <children>
+            <TableView fx:id="tvOverDue" layoutX="28.0" layoutY="146.0" prefHeight="338.0" prefWidth="713.0">
+              <columns>
+                <TableColumn fx:id="tcISBN" prefWidth="109.0" text="ISBN" />
+                  <TableColumn fx:id="tcTitle" prefWidth="172.0" text="Title" />
+                  <TableColumn fx:id="tcCopyNoID" prefWidth="75.0" text="CopyNoID" />
+                  <TableColumn fx:id="tcMember" prefWidth="126.0" text="Lib Member" />
+                <TableColumn fx:id="tcDueBack" minWidth="0.0" prefWidth="230.0" text="Due Back Date" />
+              </columns>
+            </TableView>
+            <Label layoutX="336.0" layoutY="22.0" text="OVER DUE INFORMATION" />
+            <Label layoutX="76.0" layoutY="72.0" text="ISBN" />
+            <TextField fx:id="tID" layoutX="213.0" layoutY="67.0" prefHeight="27.0" prefWidth="246.0" />
+            <Button fx:id="btnSearch" layoutX="545.0" layoutY="69.0" mnemonicParsing="false" onAction="#onClickBtnSearch" prefHeight="27.0" prefWidth="85.0" text="Search" />
+            <Label fx:id="lbError" layoutX="30.0" layoutY="117.0" prefHeight="17.0" prefWidth="446.0" textAlignment="CENTER" textFill="#e41212" />
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>
