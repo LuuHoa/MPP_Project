@@ -11,11 +11,11 @@
          <children>
             <TableView fx:id="tvOverDue" layoutX="28.0" layoutY="146.0" prefHeight="338.0" prefWidth="713.0">
               <columns>
-                <TableColumn fx:id="tcISBN" prefWidth="109.0" text="ISBN" />
-                  <TableColumn fx:id="tcTitle" prefWidth="172.0" text="Title" />
-                  <TableColumn fx:id="tcCopyNoID" prefWidth="75.0" text="CopyNoID" />
-                  <TableColumn fx:id="tcMember" prefWidth="126.0" text="Lib Member" />
-                <TableColumn fx:id="tcDueBack" minWidth="0.0" prefWidth="230.0" text="Due Back Date" />
+                <TableColumn fx:id="tcISBN" prefWidth="81.0" text="ISBN" />
+                  <TableColumn fx:id="tcTitle" prefWidth="252.0" text="Title" />
+                  <TableColumn fx:id="tcCopyNoID" prefWidth="111.0" text="CopyNoID" />
+                  <TableColumn fx:id="tcMember" prefWidth="111.0" text="Lib Member" />
+                <TableColumn fx:id="tcDueBack" minWidth="0.0" prefWidth="157.0" text="Due Back Date" />
               </columns>
             </TableView>
             <Label layoutX="336.0" layoutY="22.0" text="OVER DUE INFORMATION" />
