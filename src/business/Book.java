@@ -94,6 +94,13 @@ public class Book implements Serializable {
 
 	}
 
+	public int getTotalAvailCopies() {
+		int i = 0;
+		for (BookCopy c : this.getItsCopiesList()) {
+			if (c.isAvailable()) i++;
+		}
+		return i;
+	}
 	
 	
 	@Override
