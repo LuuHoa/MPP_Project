@@ -20,8 +20,8 @@ import javafx.collections.ObservableList;
 
 public class DataAccessService {
 
-	//private static final String OUTPUT_DIR = System.getProperty("user.dir") + "/src/dataaccess/storge/";
-	public static final String OUTPUT_DIR = System.getProperty("user.dir") + "/data/";
+	private static final String OUTPUT_DIR = System.getProperty("user.dir") + "/src/dataaccess/storge/";
+	//public static final String OUTPUT_DIR = System.getProperty("user.dir") + "/data/";
 	
 	enum StorageType {
 		USERS, BOOKS, MEMBERS, RECORD;
