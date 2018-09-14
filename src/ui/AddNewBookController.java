@@ -65,7 +65,7 @@ public class AddNewBookController {
 		String d = ((MenuItem)event.getSource()).getText().toString();
 		duration = Integer.parseInt(d);
 
-		System.out.println(d);
+		//System.out.println(d);
 	}
 	
 	@FXML
@@ -112,7 +112,7 @@ public class AddNewBookController {
 				
 				error_txt.setText("");
 				DataAccessService.addNewBook(book);
-				System.out.println("book added to the list");
+				//System.out.println("book added to the list");
 				
 				Node source = (Node) event.getSource();
 				Stage theStage = (Stage)source.getScene().getWindow();

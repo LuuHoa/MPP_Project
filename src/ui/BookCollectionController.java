@@ -45,6 +45,8 @@ public class BookCollectionController implements Initializable {
 	TableColumn<Book, String> bookLengthCol;
 	@FXML
 	TableColumn<Book, String> bookCopiesCol;
+	@FXML
+	TableColumn<Book, String> AvailCopiesCol;
 	
 	
 	@FXML
@@ -56,9 +58,9 @@ public class BookCollectionController implements Initializable {
 	@FXML
 	public Button back_btn;
 	
-	private final ObservableList<Book> data = FXCollections.observableArrayList(new Book("Jacob", 7, "Smith", null),
-			new Book("Isabella", 7, "Johnson", null), new Book("Ethan", 7, "Williams", null),
-			new Book("Emma", 7, "Jones", null), new Book("Michael", 7, "Brown", null));
+//	private final ObservableList<Book> data = FXCollections.observableArrayList(new Book("Jacob", 7, "Smith", null),
+//			new Book("Isabella", 7, "Johnson", null), new Book("Ethan", 7, "Williams", null),
+//			new Book("Emma", 7, "Jones", null), new Book("Michael", 7, "Brown", null));
 
 	private ObservableList<Book> booksData;
 
@@ -126,6 +128,9 @@ public class BookCollectionController implements Initializable {
 				.setCellValueFactory(c -> new SimpleStringProperty(String.valueOf(c.getValue().getCheckoutLength())));
 		bookCopiesCol
 				.setCellValueFactory(c -> new SimpleStringProperty(String.valueOf(c.getValue().getNumTotalCopies())));
+		AvailCopiesCol
+		.setCellValueFactory(c -> new SimpleStringProperty(String.valueOf(c.getValue().getTotalAvailCopies())));
+
 
 	//	addCopiesCol.setCellFactory(c -> new SimpleStringProperty());
 	//	addCopiesCol.setCellFactory(TextFieldTableCell.forTableColumn());

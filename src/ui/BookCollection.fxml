@@ -6,9 +6,9 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane prefHeight="398.0" prefWidth="557.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.BookCollectionController">
+<AnchorPane prefHeight="387.0" prefWidth="981.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.BookCollectionController">
    <children>
-      <GridPane prefHeight="393.0" prefWidth="886.0">
+      <GridPane prefHeight="393.0" prefWidth="965.0">
         <columnConstraints>
           <ColumnConstraints hgrow="SOMETIMES" maxWidth="390.0" minWidth="10.0" prefWidth="172.0" />
             <ColumnConstraints hgrow="SOMETIMES" maxWidth="390.0" minWidth="10.0" prefWidth="172.0" />
@@ -26,18 +26,19 @@
                <font>
                   <Font size="14.0" />
                </font></Text>
-            <TableView fx:id="bookTbl" editable="true" prefHeight="267.0" prefWidth="808.0" GridPane.columnSpan="2147483647" GridPane.rowIndex="1">
+            <TableView fx:id="bookTbl" editable="true" prefHeight="248.0" prefWidth="966.0" GridPane.columnSpan="2147483647" GridPane.rowIndex="1">
               <columns>
-                <TableColumn fx:id="bookTitleCol" prefWidth="253.0" text="Title" />
-                <TableColumn fx:id="bookISBNCol" minWidth="9.0" prefWidth="140.0" text="ISBN" />
-                  <TableColumn fx:id="bookAuthorsCol" prefWidth="198.0" text="Authors" />
-                  <TableColumn fx:id="bookLengthCol" prefWidth="132.0" text="Checkout Length" />
-                  <TableColumn fx:id="bookCopiesCol" minWidth="8.0" prefWidth="162.0" text="Current Copies" />
+                <TableColumn fx:id="bookISBNCol" minWidth="9.0" prefWidth="90.0" text="ISBN" />
+                <TableColumn fx:id="bookTitleCol" prefWidth="250.0" text="Title" />
+                  <TableColumn fx:id="bookAuthorsCol" prefWidth="153.0" text="Authors" />
+                  <TableColumn fx:id="bookLengthCol" prefWidth="164.0" text="Checkout Length" />
+                  <TableColumn fx:id="bookCopiesCol" maxWidth="2000.0" minWidth="8.0" prefWidth="125.0" text="Current Copies" />
+                  <TableColumn fx:id="AvailCopiesCol" maxWidth="2000.0" minWidth="8.0" prefWidth="182.0" text="Available Copies" />
               </columns>
             </TableView>
-            <Button fx:id="addBookBtn" alignment="CENTER" mnemonicParsing="false" onAction="#onClick" text="Add New Book" GridPane.columnIndex="3" GridPane.rowIndex="2" />
-            <Button fx:id="addCopiesBtn" mnemonicParsing="false" onAction="#onEdit" text="App Book Copies" GridPane.columnIndex="2" GridPane.rowIndex="2" />
-            <Button fx:id="back_btn" mnemonicParsing="false" onAction="#handleBackButtonAction" text="Back" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+            <Button fx:id="addBookBtn" alignment="CENTER" mnemonicParsing="false" onAction="#onClick" text="Add New Book" GridPane.columnIndex="2" GridPane.rowIndex="2" />
+            <Button fx:id="addCopiesBtn" mnemonicParsing="false" onAction="#onEdit" text="Add Book Copies" GridPane.columnIndex="3" GridPane.rowIndex="2" />
+            <Button fx:id="back_btn" mnemonicParsing="false" onAction="#handleBackButtonAction" prefHeight="25.0" prefWidth="106.0" text="Back" GridPane.columnIndex="3" GridPane.rowIndex="3" />
          </children>
       </GridPane>
    </children>

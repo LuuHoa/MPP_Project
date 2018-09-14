@@ -71,7 +71,7 @@ public class AddNewMemberController {
 			LibraryMember member = new LibraryMember("0"+(mebers.size() + 1 ), firstName, lastName ,address, telphoneStr);
 			DataAccessService.addNewMenber(member);
 			error_txt.setText("");
-			System.out.println("finished handleSaveButtonAction()");
+			//System.out.println("finished handleSaveButtonAction()");
 			
 			Node source = (Node) event.getSource();
 			Stage theStage = (Stage)source.getScene().getWindow();

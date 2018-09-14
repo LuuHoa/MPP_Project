@@ -34,6 +34,7 @@ public class CheckoutController {
 	@FXML public Button btnAdd;
 	
 	@FXML public TableView<CheckOutEntry> tvCheckoutRecord;
+	@FXML public TableColumn<CheckOutEntry, String> tcISBN;
 	@FXML public TableColumn<CheckOutEntry, String> tcBookTitle;
 	@FXML public TableColumn<CheckOutEntry, String> tcCheckoutDate;
 	@FXML public TableColumn<CheckOutEntry, String> tcDueDate;
@@ -80,8 +81,8 @@ public class CheckoutController {
 					if (cp == null) {
 						lbError.setText("There is no available copy of this book");
 					} else {
-						System.out.println(mem);
-						System.out.println(cp.getCopyNum());
+						//System.out.println(mem);
+						//System.out.println(cp.getCopyNum());
 						// Create new checkout record
 						CheckoutRecord rc = new CheckoutRecord(mem);
 						cp.setAvailable(false);
@@ -91,6 +92,7 @@ public class CheckoutController {
 				    	ObservableList<CheckOutEntry> data =
 				                FXCollections.observableArrayList(rc.getCheckOutEntries());
 
+				    	tcISBN.setCellValueFactory(c-> new SimpleStringProperty(c.getValue().getBookCopy().getOrgBook().getISBN()));
 				    	tcBookTitle.setCellValueFactory(c-> new SimpleStringProperty(c.getValue().getBookCopy().getOrgBook().getTitle()));
 				    	tcCheckoutDate.setCellValueFactory(c-> new SimpleStringProperty(c.getValue().getCheckoutDate().toString()));
 				    	tcDueDate.setCellValueFactory(c-> new SimpleStringProperty(c.getValue().getDueDate().toString()));

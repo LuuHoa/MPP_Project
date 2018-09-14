@@ -22,7 +22,7 @@
             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <Text fx:id="title" strokeType="OUTSIDE" strokeWidth="0.0" text="Member List" textAlignment="CENTER" GridPane.columnIndex="1" GridPane.columnSpan="2147483647">
+            <Text fx:id="title" strokeType="OUTSIDE" strokeWidth="0.0" text="Library Member List" textAlignment="CENTER" GridPane.columnIndex="1" GridPane.columnSpan="2147483647">
                <font>
                   <Font size="14.0" />
                </font></Text>
@@ -36,7 +36,7 @@
                   <TableColumn fx:id="zip" minWidth="0.0" prefWidth="54.0" text="Zip" />
               </columns>
             </TableView>
-            <Button fx:id="addUserBtn" alignment="CENTER" mnemonicParsing="false" onAction="#addUserEvent" text="Add User" GridPane.columnIndex="2" GridPane.rowIndex="2" />
+            <Button fx:id="addUserBtn" alignment="CENTER" mnemonicParsing="false" onAction="#addUserEvent" text="Add Member" GridPane.columnIndex="2" GridPane.rowIndex="2" />
             <Button fx:id="viewBook" mnemonicParsing="false" onAction="#viewBook" text="View Book" GridPane.columnIndex="3" GridPane.rowIndex="2" />
             <Button fx:id="checkout" mnemonicParsing="false" onAction="#checkOut" text="CheckOut Book" GridPane.columnIndex="1" GridPane.rowIndex="2" />
          </children>
